@@ -137,22 +137,22 @@
 
             <form action="">
                 <div class="inputBox">
-                    <h3>where to</h3>
-                    <input type="text" placeholder="place name">
+                    <h3>Bạn muốn đến đâu</h3>
+                    <input type="text" placeholder="Tên địa điểm">
                 </div>
                 <div class="inputBox">
-                    <h3>how many</h3>
-                    <input type="number" placeholder="number of guests">
+                    <h3>Có bao nhiêu người</h3>
+                    <input type="number" placeholder="Số lượng người">
                 </div>
                 <div class="inputBox">
-                    <h3>arrivals</h3>
+                    <h3>Ngày bắt đầu</h3>
                     <input type="date">
                 </div>
                 <div class="inputBox">
-                    <h3>leaving</h3>
+                    <h3>Ngày kết thúc</h3>
                     <input type="date">
                 </div>
-                <input type="submit" class="btn" value="book now">
+                <input type="submit" class="btn" value="Đặt ngay">
             </form>
 
         </div>
@@ -181,8 +181,8 @@
             <div class="box">
                 <img src="customer/public/images/p-1.jpg" alt="">
                 <div class="content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> mumbai </h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
+                    <h3> <i class="fas fa-map-marker-alt"></i> Mumbai</h3>
+                    <p>Bản thân nỗi đau là quan trọng đối với tầng lớp ưa thích chính. Vì sự thật!</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -191,7 +191,7 @@
                         <i class="far fa-star"></i>
                     </div>
                     <div class="price"> $90.00 <span>$120.00</span> </div>
-                    <a href="#" class="btn">book now</a>
+                    <a href="#" class="btn">Đặt ngay</a>
                 </div>
             </div>
 
