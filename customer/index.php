@@ -79,9 +79,9 @@
             <h3>Đăng nhập</h3>
             <input type="email" class="box" placeholder="Nhập email / tài khoản">
             <input type="password" class="box" placeholder="Nhập mật khẩu">
-            <input type="submit" value="Đăng nhập" class="btn">
-            <input type="checkbox" id="Nhớ ngay">
-            <label for="remember">remember me</label>
+            <input type="submit" value="Đăng nhập" class="btn mb-3">
+            <input class="me-2" type="checkbox" id="cbNhoToi">
+            <label for="remember">Nhớ tôi</label>
             <p>Quên mật khẩu <a href="#">ấn vào đây</a></p>
             <p>Bạn chưa có tài khoản <a href="#">đăng ký ngay</a></p>
         </form>
@@ -93,9 +93,9 @@
     <section class="home" id="home">
 
         <div class="content">
-            <h3>adventure is worthwhile</h3>
-            <p>dicover new places with us, adventure awaits</p>
-            <a href="#" class="btn">discover more</a>
+            <h3>Những cuộc phiêu lưu là kỉ niệm đáng giá</h3>
+            <p>Khám phá những địa điểm mới với chúng tôi, mọi thứ đang chờ bạn phía trước</p>
+            <a href="#" class="btn">Khám phá thêm</a>
         </div>
 
         <div class="controls">
