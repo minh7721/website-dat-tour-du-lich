@@ -8,15 +8,13 @@ class BaseController
      Description : path name :" folder.file.name
      lấy từ sau thư mục view 
     */
-    protected function view($viewPath 
-    // , array $data = []
-    ) 
+    protected function view($viewPath , array $data = []) 
     {
-        // foreach ($data as $key => $value)
-        // {
-        //     $$key  = $value;
-        // }
-       require (self::VIEW_FOLDER .'/' . str_replace('.','/',$viewPath) . '.php');
+        foreach ($data as $key => $value)
+        {
+            $$key  = $value;
+        }
+       require ('customer/'.self::VIEW_FOLDER .'/' . str_replace('.','/',$viewPath) . '.php');
     }
     protected function loadModel($modelPath)
     {
