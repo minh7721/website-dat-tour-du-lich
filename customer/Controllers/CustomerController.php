@@ -8,16 +8,13 @@ class CusTomerController extends BaseController
   }
   public function index()
   {
-    // $getAllLoaiHang = $this->CustomerModel->getAllLoaiHang();
-    // $getAllSP = $this->CustomerModel->getAllSP();
-    return $this->view(
-      'frontend.customer.index'
-      // [
-        // 'getAllLoaiHang' => $getAllLoaiHang,
-        // 'getAllSP' => $getAllSP
-      // ]
-    );
+    $getAllTour = $this -> CustomerModel -> getTour();
+    return $this -> view('frontend.customer.index', ['getAllTour' => $getAllTour]);
   }
+
+  public function getAllTour(){
+  }
+
 
 //   public function getAllLoaiHang()
 //   {

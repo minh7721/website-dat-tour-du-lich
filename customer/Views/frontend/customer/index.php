@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
     <!-- custom css file link  -->
-    <link rel="stylesheet" href="customer/public/css/style.css">
-    <link rel="stylesheet" href="customer/public/css/customer.css">
+    <link rel="stylesheet" href="public/css/style.css">
+    <link rel="stylesheet" href="public/css/customer.css">
 
 </head>
 
@@ -84,15 +84,15 @@
         </div>
 
         <div class="controls">
-            <span class="vid-btn active" data-src="customer/public/images/vid-1.mp4"></span>
-            <span class="vid-btn" data-src="customer/public/images/vid-2.mp4"></span>
-            <span class="vid-btn" data-src="customer/public/images/vid-3.mp4"></span>
-            <span class="vid-btn" data-src="customer/public/images/vid-4.mp4"></span>
-            <span class="vid-btn" data-src="customer/public/images/vid-5.mp4"></span>
+            <span class="vid-btn active" data-src="public/images/vid-1.mp4"></span>
+            <span class="vid-btn" data-src="public/images/vid-2.mp4"></span>
+            <span class="vid-btn" data-src="public/images/vid-3.mp4"></span>
+            <span class="vid-btn" data-src="public/images/vid-4.mp4"></span>
+            <span class="vid-btn" data-src="public/images/vid-5.mp4"></span>
         </div>
 
         <div class="video-container">
-            <video src="customer/public/images/vid-1.mp4" id="video-slider" loop autoplay muted></video>
+            <video src="public/images/vid-1.mp4" id="video-slider" loop autoplay muted></video>
         </div>
 
     </section>
@@ -117,7 +117,7 @@
         <div class="row">
 
             <div class="image">
-                <img src="customer/public/images/book-img.svg" alt="">
+                <img src="public/images/book-img.svg" alt="">
             </div>
 
             <form action="">
@@ -163,25 +163,31 @@
 
         <div class="box-container">
 
-            <div class="box">
-                <img src="customer/public/images/p-1.jpg" alt="">
-                <div class="content">
-                    <h3> <i class="fas fa-map-marker-alt"></i> Mumbai</h3>
-                    <p>Bản thân nỗi đau là quan trọng đối với tầng lớp ưa thích chính. Vì sự thật!</p>
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="far fa-star"></i>
+        <?php
+            foreach($getAllTour as $getTour){
+                ?>
+                <div class="box">
+                    <img src="<?php echo $getTour['anhDiaDiem']?>" alt="">
+                    <div class="content">
+                        <h3> <i class="fas fa-map-marker-alt"></i><?php echo $getTour['tenTour'] ?></h3>
+                        <p><?php echo $getTour['moTaDiaDiem'] ?></p>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                        </div>
+                        <div class="price"><?php echo $getTour['giaBanDau']?><span><?php echo $getTour['giaSauGiam']?></span> </div>
+                        <a href="#" class="btn">Đặt ngay</a>
                     </div>
-                    <div class="price"> $90.00 <span>$120.00</span> </div>
-                    <a href="#" class="btn">Đặt ngay</a>
                 </div>
-            </div>
+<?php
+            }
+        ?>
 
             <div class="box">
-                <img src="customer/public/images/p-2.jpg" alt="">
+                <img src="public/images/p-2.jpg" alt="">
                 <div class="content">
                     <h3> <i class="fas fa-map-marker-alt"></i> hawaii </h3>
                     <p>Nơi thư giãn lý tưởng sau những ngày làm việc mệt mỏi!</p>
@@ -198,7 +204,7 @@
             </div>
 
             <div class="box">
-                <img src="customer/public/images/p-3.jpg" alt="">
+                <img src="public/images/p-3.jpg" alt="">
                 <div class="content">
                     <h3> <i class="fas fa-map-marker-alt"></i> sydney </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
@@ -215,7 +221,7 @@
             </div>
 
             <div class="box">
-                <img src="customer/public/images/p-4.jpg" alt="">
+                <img src="public/images/p-4.jpg" alt="">
                 <div class="content">
                     <h3> <i class="fas fa-map-marker-alt"></i> paris </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
@@ -232,7 +238,7 @@
             </div>
 
             <div class="box">
-                <img src="customer/public/images/p-5.jpg" alt="">
+                <img src="public/images/p-5.jpg" alt="">
                 <div class="content">
                     <h3> <i class="fas fa-map-marker-alt"></i> tokyo </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
@@ -249,7 +255,7 @@
             </div>
 
             <div class="box">
-                <img src="customer/public/images/p-6.jpg" alt="">
+                <img src="public/images/p-6.jpg" alt="">
                 <div class="content">
                     <h3> <i class="fas fa-map-marker-alt"></i> eypt </h3>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis, nam!</p>
@@ -340,7 +346,7 @@
         <div class="box-container">
 
             <div class="box">
-                <img src="customer/public/images/g-1.jpg" alt="">
+                <img src="public/images/g-1.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -348,7 +354,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-2.jpg" alt="">
+                <img src="public/images/g-2.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -356,7 +362,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-3.jpg" alt="">
+                <img src="public/images/g-3.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -364,7 +370,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-4.jpg" alt="">
+                <img src="public/images/g-4.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -372,7 +378,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-5.jpg" alt="">
+                <img src="public/images/g-5.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -380,7 +386,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-6.jpg" alt="">
+                <img src="public/images/g-6.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -388,7 +394,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-7.jpg" alt="">
+                <img src="public/images/g-7.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -396,7 +402,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-8.jpg" alt="">
+                <img src="public/images/g-8.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -404,7 +410,7 @@
                 </div>
             </div>
             <div class="box">
-                <img src="customer/public/images/g-9.jpg" alt="">
+                <img src="public/images/g-9.jpg" alt="">
                 <div class="content">
                     <h3>Một vùng đất tuyệt vời</h3>
                     <p>Những kì quan hùng vĩ đang đón chờ bạn ở nơi đây.</p>
@@ -437,7 +443,7 @@
 
                 <div class="swiper-slide">
                     <div class="box">
-                        <img src="customer/public/images/pic1.png" alt="">
+                        <img src="public/images/pic1.png" alt="">
                         <h3>Khoa pug</h3>
                         <p>Đây chính là nơi các bạn nên đặt chân đến ít nhất một lần trong đời, con người tuyệt vời, đồ ăn đa dạng, những cảnh quan hùng vĩ độc nhất vô nhị trên thế giới, nếu có thể thì hãy đến đây để thư giãn sau một khoảng thời gian dài làm việc mệt mỏi</p>
                         <div class="stars">
@@ -451,7 +457,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="box">
-                        <img src="customer/public/images/pic2.png" alt="">
+                        <img src="public/images/pic2.png" alt="">
                         <h3>Vũ Khắc Tiệp</h3>
                         <p>Đây chính là nơi các bạn nên đặt chân đến ít nhất một lần trong đời, con người tuyệt vời, đồ ăn đa dạng, những cảnh quan hùng vĩ độc nhất vô nhị trên thế giới, nếu có thể thì hãy đến đây để thư giãn sau một khoảng thời gian dài làm việc mệt mỏi</p>
                        <div class="stars">
@@ -465,7 +471,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="box">
-                        <img src="customer/public/images/pic3.png" alt="">
+                        <img src="public/images/pic3.png" alt="">
                        <h3>Ngọc Trinh</h3>
                         <p>Đây chính là nơi các bạn nên đặt chân đến ít nhất một lần trong đời, con người tuyệt vời, đồ ăn đa dạng, những cảnh quan hùng vĩ độc nhất vô nhị trên thế giới, nếu có thể thì hãy đến đây để thư giãn sau một khoảng thời gian dài làm việc mệt mỏi</p>
                          <div class="stars">
@@ -479,7 +485,7 @@
                 </div>
                 <div class="swiper-slide">
                     <div class="box">
-                        <img src="customer/public/images/pic4.png" alt="">
+                        <img src="public/images/pic4.png" alt="">
                        <h3>Đỗ Văn Xuân</h3>
                         <p>Đây chính là nơi các bạn nên đặt chân đến ít nhất một lần trong đời, con người tuyệt vời, đồ ăn đa dạng, những cảnh quan hùng vĩ độc nhất vô nhị trên thế giới, nếu có thể thì hãy đến đây để thư giãn sau một khoảng thời gian dài làm việc mệt mỏi</p>
                          <div class="stars">
@@ -517,7 +523,7 @@
         <div class="row">
 
             <div class="image">
-                <img src="customer/public/images/contact-img.svg" alt="">
+                <img src="public/images/contact-img.svg" alt="">
             </div>
 
             <form action="">
@@ -544,12 +550,12 @@
 
         <div class="swiper-container brand-slider">
             <div class="swiper-wrapper">
-                <div class="swiper-slide"><img src="customer/public/images/1.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="customer/public/images/2.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="customer/public/images/3.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="customer/public/images/4.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="customer/public/images/5.jpg" alt=""></div>
-                <div class="swiper-slide"><img src="customer/public/images/6.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="public/images/1.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="public/images/2.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="public/images/3.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="public/images/4.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="public/images/5.jpg" alt=""></div>
+                <div class="swiper-slide"><img src="public/images/6.jpg" alt=""></div>
             </div>
         </div>
 
@@ -599,7 +605,7 @@
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
     <!-- custom js file link  -->
-    <script src="customer/public/js/script.js"></script>
+    <script src="public/js/script.js"></script>
 
 </body>
 

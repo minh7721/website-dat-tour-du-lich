@@ -14,10 +14,10 @@ class BaseController
         {
             $$key  = $value;
         }
-       require ('customer/'.self::VIEW_FOLDER .'/' . str_replace('.','/',$viewPath) . '.php');
+       require (self::VIEW_FOLDER .'/' . str_replace('.','/',$viewPath) . '.php');
     }
     protected function loadModel($modelPath)
     {
-        require ('customer/'.self::MODEL_FOLDER .'/' . $modelPath . '.php');
+        require (self::MODEL_FOLDER .'/' . $modelPath . '.php');
     }
 }

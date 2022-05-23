@@ -1,16 +1,24 @@
 <?php
 
     class CustomerModel extends BaseModel{
-    //     CONST LOAIHANG = 'loaihang';
-    //     CONST SANPHAM = 'sanpham';
-    //     public function getAllLoaiHang(){
-    //         return $this -> getAll(self::LOAIHANG);
-    //     }
+        CONST TOUR = 'tour';
+        // public function getAllLoaiHang(){
+        //     return $this -> getAll(self::LOAIHANG);
+        // }
 
-    //     public function getALLSP(){
-    //         return $this -> getAll(self::SANPHAM);
-    //     }
+        public function getAllTour(){
+            return $this -> getAll(self::TOUR);
+        }
 
+        public function getTour(){
+            $sql = "SELECT * FROM tour, diadiem, khachsan, phuongtien where tour.idDiaDiem = diadiem.idDiaDiem and tour.idPhuongTien = phuongtien.idPT and tour.idKhachSan = khachsan.idKS";
+            $query = $this -> query($sql);
+            $ar = [];
+            while($row = mysqli_fetch_assoc($query)){
+                array_push($ar, $row);
+            }
+            return $ar;
+        }
     //     public function getSPLH($id, $nameColID){
     //         return $this -> findByID(self::LOAIHANG, $id, $nameColID);
     //     }

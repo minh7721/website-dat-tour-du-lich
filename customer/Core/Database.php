@@ -5,8 +5,6 @@ class Database
     const USERNAME = 'root'; 
     const DB_NAME = 'travel';
     const PASSWORD = '';
-    // const URL = "http://localhost/clothes/";
-    // URL: =
     private  $connect;
     public function connect(){
         $connect = mysqli_connect(self::HOST,self::USERNAME,self::PASSWORD,self::DB_NAME);
