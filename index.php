@@ -1,3 +1,3 @@
 <?php
-    include("./customer/index.php");
+    // include("./customer/index.php");
 ?>
