@@ -5,13 +5,17 @@ class Database
     const USERNAME = 'root'; 
     const DB_NAME = 'travel';
     const PASSWORD = '';
-    private  $connect;
+    // private $connect;
     public function connect(){
-        $connect = mysqli_connect(self::HOST,self::USERNAME,self::PASSWORD,self::DB_NAME);
-        mysqli_set_charset($connect,"utf8");
-        if(mysqli_connect_errno()==0){
-            return $connect;
-        }
-         return false;
+         try {
+            $connect = "mysql:host=".self::HOST.";dbname=".self::DB_NAME.";charset=utf8";
+            $pdo = new PDO($connect, self::USERNAME, self::PASSWORD);
+            // set the PDO error mode to exception
+            $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            return $pdo;
+          } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
+          }
     }
-}
+  }
+?>

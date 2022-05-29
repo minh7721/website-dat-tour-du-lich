@@ -7,15 +7,15 @@ class BaseModel extends Database
     }
 
     //lấy hết data từ table
-    public function getAll($table){
-      $sql = "SELECT * from $table";
-      $query = $this-> query($sql);
-      $ar = [];
-      while($row=  mysqli_fetch_assoc($query)){
-        array_push($ar,$row);
-      }
-      return $ar;
-    }
+    // public function getAll($table){
+    //   $sql = "SELECT * from $table";
+    //   $query = $this-> query($sql);
+    //   $ar = [];
+    //   while($row=  mysqli_fetch_assoc($query)){
+    //     array_push($ar,$row);
+    //   }
+    //   return $ar;
+    // }
     
   //   public function delete($table, $ar)
   // {
@@ -105,7 +105,7 @@ class BaseModel extends Database
 
     public function query($sql)
     {
-      return mysqli_query($this->connect,$sql);
+      return $this->connect()->query($sql);
+      // return mysqli_query($this->connect,$sql);
     }
-
 }

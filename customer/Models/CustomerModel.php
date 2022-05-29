@@ -2,26 +2,48 @@
 
     class CustomerModel extends BaseModel{
         CONST TOUR = 'tour';
-        // public function getAllLoaiHang(){
-        //     return $this -> getAll(self::LOAIHANG);
-        // }
-
-        public function getAllTour(){
-            return $this -> getAll(self::TOUR);
-        }
-
+       
         public function getTour(){
             $sql = "SELECT * FROM tour, diadiem, khachsan, phuongtien where tour.idDiaDiem = diadiem.idDiaDiem and tour.idPhuongTien = phuongtien.idPT and tour.idKhachSan = khachsan.idKS";
             $query = $this -> query($sql);
             $ar = [];
-            while($row = mysqli_fetch_assoc($query)){
+            // while($row = mysqli_fetch_assoc($query)){
+                while($row = $query->fetch()){
                 array_push($ar, $row);
             }
             return $ar;
         }
-    //     public function getSPLH($id, $nameColID){
-    //         return $this -> findByID(self::LOAIHANG, $id, $nameColID);
-    //     }
+        public function getTourName($idTour){
+            $sql = "SELECT * FROM tour where idTour = ".$idTour;
+            $query = $this -> query($sql);
+            $ar = [];
+            // while($row = mysqli_fetch_assoc($query)){
+                while($row = $query->fetch()){
+                array_push($ar, $row);
+            }
+            return $ar;
+        }
+
+        public function countTour(){
+            $sql = "SELECT count(idTour) as slSP from tour";
+            $query = $this -> query($sql);
+            $row = $query -> fetch();
+            return $row;
+        }
+
+        public function getTourPT($cr_page, $limit){
+            $sql = "SELECT * FROM tour, diadiem, khachsan, phuongtien 
+                    where tour.idDiaDiem = diadiem.idDiaDiem and tour.idPhuongTien = phuongtien.idPT and tour.idKhachSan = khachsan.idKS
+                    limit $cr_page,$limit";
+            $query = $this -> query($sql);
+            $ar = [];
+                while($row = $query->fetch()){
+                array_push($ar, $row);
+            }
+            return $ar;
+        }
+
+
     //     public function getSPbyLH($id){
     //         $sql = "SELECT * FROM sanpham SP ,loaihang LH where SP.IDLoaiHang = LH.IDLoaiHang and LH.IDLoaiHang = '$id'";
     //         $query = $this -> query($sql);
@@ -100,6 +122,3 @@
     //         }
     //     }
     }
-
-
-?>
