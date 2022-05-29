@@ -29,7 +29,7 @@
             <a href="./index.php"><i class="fas fa-home me-3"></i>Trang chủ</a>
           </li>
           <li>
-            <a href="./Tour.php"><i class="fas fa-graduation-cap me-3"></i>Tour du lịch</a>
+            <a href="./Tour.php"><i class="fas fa-address-card me-3"></i>Tour du lịch</a>
           </li>
           <li>
             <a href="./PT.php"><i class="fas fa-user me-3"></i>Phương tiện</a>
@@ -44,6 +44,10 @@
             <a href="KS.php"><i class="fas fa-address-card me-3"></i>Khách sạn</a>
           </li>
           <li>
+          <li>
+            <a href="hoadon.php"><i class="fas fa-book-open me-3"></i>Hoá đơn</a>
+          </li>
+          <li>
             <a href="logout.php"><i class="fas fa-address-card me-3"></i>Đăng xuất</a>
           </li>
         </ul>
@@ -52,19 +56,22 @@
     </nav>
     <!-- End sidebar -->
     <!-- Page Content  -->
-    <div id="content" class="">
-      <!-- Start navbar -->
-      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <img src="../img/logo.png" style="width:100px;" class="me-3" alt="">
-        <div class="container-fluid">
-          <button type="button" id="sidebarCollapse" class="btn btn-primary">
-            <i class="fa fa-bars"></i>
-            <span class="sr-only">Toggle Menu</span>
-          </button>
-          <!-- Start Profile -->
-          
-         
-          <!--End Profile -->
-        </div>
-      </nav>
-      <!-- End navbar -->
+    <div id="content" class="p-4 p-md-5">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+
+    <button type="button" id="sidebarCollapse" class="btn btn-primary">
+      <i class="fa fa-bars"></i>
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <a href="thongTinAdmin.php">
+      <img src="http://www.tlu.edu.vn/Portals/0/2014/Logo-WRU.png" alt="Đại học TL" height="43" width="50">
+    </a>
+  </div>
+</nav>
+      
