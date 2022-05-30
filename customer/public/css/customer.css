@@ -8,3 +8,8 @@ a {
     /* margin-left: 2rem; */
     /* margin-bottom: 2rem; */
 }
+.packages .box-container .box .content p {
+    height: 200px;
+    text-overflow: ellipsis;
+    display: block;
+}
