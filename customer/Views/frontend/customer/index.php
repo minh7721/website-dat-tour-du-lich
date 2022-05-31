@@ -91,32 +91,35 @@ include("headfoot/header.php");
     </h1>
 
     <div class="showTour">
-    <div class="box-container">
+        <div class="box-container">
             <?php
             foreach ($getAllTour as $getTour) {
             ?>
                 <div class="box">
-                    <img src="<?php echo $getTour['anhDiaDiem'] ?>" alt="">
-                    <div class="content">
-                        <h3> <i class="fas fa-map-marker-alt"></i><?php echo $getTour['tenTour'] ?></h3>
-                        <p><?php echo $getTour['moTaDiaDiem'] ?></p>
-                        <div class="stars">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="far fa-star"></i>
-                        </div>
-                        <div class="price">
-                            <div class="priceX">
-                                <?php echo $getTour['giaSauGiam'] ?>
+                    <a href="http://localhost/website_book_tour/customer/?controller=ChiTietTour&action=index&idTour=<?php echo $getTour['idTour']?>">
+                        <img src="<?php echo $getTour['anhDiaDiem'] ?>" alt="">
+                        <div class="content">
+                            <h3> <i class="fas fa-map-marker-alt"></i><?php echo $getTour['tenTour'] ?></h3>
+                            <p class="moTaDiaDiem"><?php echo $getTour['moTaDiaDiem'] ?></p>
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
                             </div>
-                            <span class="priceX">
-                                <?php echo $getTour['giaBanDau'] ?>
-                            </span>
+                            <div class="price">
+                                <div class="priceX">
+                                    <?php echo $getTour['giaSauGiam'] ?>
+                                </div>
+                                <span class="priceX">
+                                    <?php echo $getTour['giaBanDau'] ?>
+                                </span>
+                            </div>
+                            <a href="?controller=customer&action=chiTietTour" class="btn btnDatNgay">Đặt ngay</a>
                         </div>
-                        <a href="?controller=customer&action=chiTietTour" class="btn btnDatNgay">Đặt ngay</a>
-                    </div>
+                
+                    </a>
                 </div>
             <?php
             }

@@ -3,12 +3,32 @@ $HOST = 'localhost';
 $USERNAME = 'root';
 $DB_NAME = 'travel';
 $PASSWORD = '';
-$conn = new PDO("mysql:host=" . $HOST . ";dbname=" .$DB_NAME . ";charset=utf8", $USERNAME,$PASSWORD);
+$conn = new PDO("mysql:host=" . $HOST . ";dbname=" . $DB_NAME . ";charset=utf8", $USERNAME, $PASSWORD);
 $conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-if(!$conn){
+if (!$conn) {
 	echo "Connect failed";
 }
 ?>
+
+<?php
+if (isset($_POST['btnLogin'])) {
+	$email = $_POST['email'];
+	$pass = $_POST['pass'];
+	$btnLogin = $_POST['btnLogin'];
+	$sqlCheckU = $conn->prepare("SELECT * FROM user where email = '".$email."'");
+	$sqlCheckU->execute();
+	//Thiết lập kiểu dữ liệu trả về
+	$sqlCheckU->setFetchMode(PDO::FETCH_ASSOC);
+		if($sqlCheckU -> rowCount()>0){
+			while($row = $sqlCheckU -> fetch()){
+				if($email = $row['email']){
+					header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
+				}
+			}
+		}
+	}
+?>
+
 
 <!doctype html>
 <html lang="en">
@@ -71,6 +91,7 @@ if(!$conn){
 			</div>
 		</div>
 	</section>
+
 
 	<script src="js/jquery.min.js"></script>
 	<script src="js/popper.js"></script>

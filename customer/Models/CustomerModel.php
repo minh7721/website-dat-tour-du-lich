@@ -17,7 +17,6 @@
             $sql = "SELECT * FROM tour where idTour = ".$idTour;
             $query = $this -> query($sql);
             $ar = [];
-            // while($row = mysqli_fetch_assoc($query)){
                 while($row = $query->fetch()){
                 array_push($ar, $row);
             }

@@ -17,16 +17,12 @@ class CusTomerController extends BaseController
     $getAllTour = $this->CustomerModel->getTour();
     $slTour = $this->CustomerModel->countTour();
     $slTours = $slTour['slSP'];
-    $limit = 2;
+    $limit = 3;
     $soTrang = ceil($slTours / $limit);
     $getTourPT = $this -> CustomerModel -> getTourPT($page, $limit);
     return $this->view('frontend.customer.index', ['getAllTour' => $getAllTour, 'soTrang' => $soTrang]);
   }
 
-  public function chiTietTour()
-  {
-    return $this->view('frontend.customer.chiTietTour');
-  }
   public function getAllTour()
   {
     $getAllTour = $this->CustomerModel->getTour();
@@ -63,7 +59,7 @@ class CusTomerController extends BaseController
     }
     $slTour = $this->CustomerModel->countTour();
     $slTours = $slTour['slSP'];
-    $limit = 2;
+    $limit = 3;
     $start = $limit*($page-1);
     $soTrang = ceil($slTours / $limit);
     $getTourPT = $this -> CustomerModel -> getTourPT($start, $limit);
