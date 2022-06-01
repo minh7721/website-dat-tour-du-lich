@@ -53,8 +53,8 @@ if (isset($_GET['idTour'])) {
                                         <img class="container img-fluid" src="<?php echo $chiTietTour[0]['anhDiaDiem']; ?>" alt="">
                                     </div>
                                     <div class="container img_small">
-                                        <!-- <img class="container img-fluid" src="" alt="">
-                                        <img class="container img-fluid" src="" alt=""> -->
+                                        <img class="container img-fluid" src="<?php echo $chiTietTour[0]['anhDiaDiem2']; ?>" alt="">
+                                        <img class="container img-fluid" src="<?php echo $chiTietTour[0]['anhDiaDiem3']; ?>" alt="">
                                     </div>
                                 </div>
 
@@ -91,8 +91,7 @@ if (isset($_GET['idTour'])) {
                                         <br>
                                         <div style="margin-top: 15px;">
                                             <!-- <button id="add_cart" class="btn btn-danger" type="button">Thêm vào giỏ hàng</button> -->
-                                            <button name="submit" class="btn btn-success" type="submit" >Đặt tour ngay</button>
-
+                                            <a class="btn" href="http://localhost/website_book_tour/customer/?controller=Checkout&action=index&idTour=<?php echo $chiTietTour[0]['idTour']; ?>">Đặt tour ngay</a>
                                         </div>
                                     </form>
                                 </div>

@@ -96,7 +96,7 @@ include("headfoot/header.php");
             foreach ($getAllTour as $getTour) {
             ?>
                 <div class="box">
-                    <a href="http://localhost/website_book_tour/customer/?controller=ChiTietTour&action=index&idTour=<?php echo $getTour['idTour']?>">
+                    <a href="http://localhost/website_book_tour/customer/?controller=ChiTietTour&action=index&idTour=<?php echo $getTour['idTour'] ?>">
                         <img src="<?php echo $getTour['anhDiaDiem'] ?>" alt="">
                         <div class="content">
                             <h3> <i class="fas fa-map-marker-alt"></i><?php echo $getTour['tenTour'] ?></h3>
@@ -118,7 +118,6 @@ include("headfoot/header.php");
                             </div>
                             <a href="?controller=customer&action=chiTietTour" class="btn btnDatNgay">Đặt ngay</a>
                         </div>
-                
                     </a>
                 </div>
             <?php
@@ -407,15 +406,15 @@ include("headfoot/header.php");
 
         <form action="">
             <div class="inputBox">
-                <input type="text" placeholder="Họ tên">
-                <input type="email" placeholder="Email">
+                <input class="contact contactName" type="text" placeholder="Họ tên">
+                <input class="contact contactEmail" type="email" placeholder="Email">
             </div>
             <div class="inputBox">
-                <input type="number" placeholder="Số điện thoại">
-                <input type="text" placeholder="Chủ đề">
+                <input class="contact contactPhone" type="number" placeholder="Số điện thoại">
+                <input class="contact contactContent" type="text" placeholder="Chủ đề">
             </div>
-            <textarea placeholder="Tin nhắn" name="" id="" cols="30" rows="10"></textarea>
-            <input type="submit" class="btn" value="Gửi">
+            <textarea class="contactMessage" placeholder="Tin nhắn" name="" id="" cols="30" rows="10"></textarea>
+            <button class="btn contact contactBtnSubmit">Gửi</button>
         </form>
 
     </div>

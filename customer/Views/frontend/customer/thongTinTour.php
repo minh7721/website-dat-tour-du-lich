@@ -6,7 +6,7 @@
                     <img src="<?php echo $getTour['anhDiaDiem'] ?>" alt="">
                     <div class="content">
                         <h3> <i class="fas fa-map-marker-alt"></i><?php echo $getTour['tenTour'] ?></h3>
-                        <p><?php echo $getTour['moTaDiaDiem'] ?></p>
+                        <p class="moTaDiaDiem"><?php echo $getTour['moTaDiaDiem'] ?></p>
                         <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>

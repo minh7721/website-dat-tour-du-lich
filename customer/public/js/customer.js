@@ -24,6 +24,7 @@ function dauChamSo() {
 }
 
 $(document).ready(function () {
+  // phanTrang(1);
   function phanTrang(page) {
     $.ajax({
       url: "http://localhost/website_book_tour/customer/?controller=customer&action=getTourPT",
@@ -33,13 +34,26 @@ $(document).ready(function () {
       },
       success: function (dt) {
         $(".showTour").html(dt);
-        console.log(page);
+        dauChamSo();
       },
     });
   }
-  
   $(".pageNum").on("click", function () {
     page = $(this).attr("page");
     phanTrang(page);
   });
+
+
+  $('.contactBtnSubmit').on('click', function(){
+    contactName = $('.contactName').html();
+    console.log(contactName);
+    contactEmail = $('.contactEmail').html();
+    console.log(contactEmail);
+    contactPhone = $('.contactPhone').html();
+    console.log(contactPhone);
+    contactContent = $('.contactContent').html();
+    console.log(contactContent);
+    contactMessage = $('.contactMessage').html();
+    console.log(contactMessage);
+  })
 });
