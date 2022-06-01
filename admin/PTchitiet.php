@@ -1,4 +1,8 @@
 <?php
+if (isset($_GET["idPT"]))
+$idPT = $_GET["idPT"];
+else
+$idPT = "";
 include("header.php")
 ?>
 <main>
@@ -12,12 +16,11 @@ include("header.php")
                 <th scope="col">ID phương tiện</th>
                 <th scope="col">Loại phương tiện</th>
                 <th scope="col">Tên phương tiện</th>
-            
+                <th scope="col">Mô tả phương tiện</th>
                 <th scope="col">Ảnh phương tiện</th>
                
                     <th scope="col">Sửa</th>
                     <th scope="col">Xóa</th>
-                    <th scope="col">Chi tiết</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +28,7 @@ include("header.php")
                 include("./config/db.php");
 
                 $sql = "SELECT *
-                FROM phuongtien";
+                FROM phuongtien WHERE idPT=$idPT";
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {
@@ -34,12 +37,11 @@ include("header.php")
                         echo '<th scope="row">' . $row['idPT'] . '</th>';
                         echo '<td>' . $row['loaiPhuongTien'] . '</td>';
                         echo '<td>' . $row['tenPhuongTien'] . '</td>';
-                       
+                        echo '<td>' . $row['moTaPT'] . '</td>';
                         echo '<td>' . '<img style="width: 100px" src="'.$row['anhPT'].'"><img/>' . '</td>';
 
                         echo '<td><a href="suaPT.php?idPT=' . $row['idPT'] . '"><i class="fas fa-edit"></i></a></td>';
                         echo '<td><a href="xoaPT.php?idPT=' . $row['idPT'] . '"><i class="fas fa-trash-alt"></i></a></td>';
-                        echo '<td><a href="PTchitiet.php?idPT=' . $row['idPT'] . '">Chi tiết</a></td>';
                         echo '</tr>';
                     }
                 }

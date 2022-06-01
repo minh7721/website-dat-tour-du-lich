@@ -1,4 +1,8 @@
 <?php
+if (isset($_GET["idTour"]))
+$idTour = $_GET["idTour"];
+else
+$idTour = "";
 include("header.php")
 ?>
 <main>
@@ -16,11 +20,14 @@ include("header.php")
                 <th scope="col">Giá ban đầu</th>
                 <th scope="col">Giá sau giảm</th>
                 <th scope="col">Đã sử dụng hết</th>
-               
+                <th scope="col">ID địa điểm</th>
+                <th scope="col">ID khách sạn</th>
+                <th scope="col">ID phương tiện</th>
+                <th scope="col">Lịch trình</th>
                
                     <th scope="col">Sửa</th>
                     <th scope="col">Xóa</th>
-                    <th scope="col">Chi tiết</th>
+                
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +35,7 @@ include("header.php")
                 include("./config/db.php");
 
                 $sql = "SELECT *
-                FROM tour";
+                FROM tour Where idTour= $idTour";
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {
@@ -41,11 +48,13 @@ include("header.php")
                         echo '<td>' . $row['giaBanDau'] . '</td>';
                         echo '<td>' . $row['giaSauGiam'] . '</td>';
                         echo '<td>' . $row['daSuDungHet'] . '</td>';
-                        
-                        
+                        echo '<td>' . $row['idDiaDiem'] . '</td>';
+                        echo '<td>' . $row['idKhachSan'] . '</td>';
+                        echo '<td>' . $row['idPhuongTien'] . '</td>';
+                        echo '<td>' . $row['lichTrinh'] . '</td>';
                         echo '<td><a href="suatour.php?idTour=' . $row['idTour'] . '"><i class="fas fa-edit"></i></a></td>';
                         echo '<td><a href="xoatour.php?idTour=' . $row['idTour'] . '"><i class="fas fa-trash-alt"></i></a></td>';
-                        echo '<td><a href="Tourchitiet.php?idTour=' . $row['idTour'] . '">Chi tiết</a></td>';
+                        
 
                         echo '</tr>';
                     }
