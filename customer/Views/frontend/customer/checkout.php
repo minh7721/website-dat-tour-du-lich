@@ -21,7 +21,7 @@
             </div>
             <div class="box-inner-1 pb-3 mb-3 ">
                 <div class="d-flex justify-content-between mb-3 userdetails">
-                    <p class="fw-bold">Minimal Icons by Oliur</p>
+                    <p class="fw-bold"><?= $chiTietTour[0]['tenTour']?></p>
                     <p class="fw-lighter"><span class="fas fa-dollar-sign"></span>19.00</p>
                 </div>
                 <div id="my" class="carousel slide carousel-fade img-details" data-bs-ride="carousel" data-bs-interval="2000">
