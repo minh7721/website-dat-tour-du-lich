@@ -22,7 +22,7 @@
                                 <?php echo $getTour['giaBanDau'] ?>
                             </span>
                         </div>
-                        <a href="?controller=customer&action=chiTietTour" class="btn btnDatNgay">Đặt ngay</a>
+                        <a href="?controller=checkout&action=index&idTour=<?php echo $getTour['idTour']?>" class="btn btnDatNgay">Đặt ngay</a>
                     </div>
                 </div>
             <?php

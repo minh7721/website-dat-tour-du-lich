@@ -23,6 +23,7 @@ if (isset($_POST['btnLogin'])) {
 			while($row = $sqlCheckU -> fetch()){
 				if($email = $row['email']){
 					header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
+					// $idKH = $_SESSION
 				}
 			}
 		}
