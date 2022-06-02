@@ -1,14 +1,6 @@
 <?php
 session_start();
-$HOST = 'localhost';
-$USERNAME = 'root';
-$DB_NAME = 'travel';
-$PASSWORD = '';
-$conn = new PDO("mysql:host=" . $HOST . ";dbname=" . $DB_NAME . ";charset=utf8", $USERNAME, $PASSWORD);
-$conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-if (!$conn) {
-	echo "Connect failed";
-}
+include('./database/db.php');
 ?>
 
 <?php
@@ -31,7 +23,7 @@ if (isset($_POST['btnLogin'])) {
 			$sqlttKH = $conn->prepare("SELECT * FROM khachhang where email = '" . $email . "'");
 			$row1 = $sqlttKH->fetch();
 			$_SESSION['loginOK'] = $email;
-			$_SESSION['loginSuccess'] = "<h1 class='text-success text-center'>Xin chào " . $row1['8'] . "</h1>";
+			// $_SESSION['loginSuccess'] = "<h1 class='text-success text-center'>Xin chào " . $row1['8'] . "</h1>";
 			header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
 		} else {
 			$_SESSION['titleFalse'] = "<h2 class='text-warning text-center'>Tài khoản hoặc mật khẩu không chính xác</h2>";
@@ -63,12 +55,18 @@ if (isset($_POST['btnLogin'])) {
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">Đăng nhập</h2>
-					<div class="heading-section">	<?php
-			 if (isset($_SESSION['titleFalse'])) {
-                echo $_SESSION['titleFalse'];
-                unset($_SESSION['titleFalse']);
-            }
-			?></div>
+					<div class="heading-section">
+						<?php
+						if (isset($_SESSION['titleFalse'])) {
+							echo $_SESSION['titleFalse'];
+							unset($_SESSION['titleFalse']);
+						}
+						if (isset($_SESSION['check-email'])) {
+							echo $_SESSION['check-email'];
+							unset($_SESSION['check-email']);
+						}
+						?>
+					</div>
 				</div>
 			</div>
 			<div class="row justify-content-center">
