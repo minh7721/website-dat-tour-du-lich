@@ -1,3 +1,21 @@
+<?php
+    session_start();
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $phone = $_POST['phone'];
+    $birthday = $_POST['birthday'];
+    $pass1 = $_POST['pass1'];
+    $pass2 = $_POST['pass2'];
+    $btnDangKy = $_POST['btnDangKy'];
+
+    if(isset($btnDangKy)){
+        
+    }
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -27,27 +45,27 @@
                     <div class="login-wrap p-0">
                         <form action="#" class="signin-form">
                             <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Họ tên" required>
+                                <input type="text" name="name" class="form-control" placeholder="Họ tên" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email" required>
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-control" placeholder="Số điện thoại" required>
+                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
                             </div>
                             <div class="form-group">
-                                <input type="date" class="form-control" placeholder="Ngày sinh" required>
+                                <input type="date" name="birthday" class="form-control" placeholder="Ngày sinh" required>
                             </div>
                             <div class="form-group">
-                                <input id="password-field" type="password" class="form-control" placeholder="Mật khẩu" required>
+                                <input id="password-field" name="pass1" type="password" class="form-control" placeholder="Mật khẩu" required>
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                             <div class="form-group">
-                                <input id="password-field" type="password" class="form-control" placeholder="Nhập lại mật khẩu" required>
+                                <input id="password-field" name="pass2" type="password" class="form-control" placeholder="Nhập lại mật khẩu" required>
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="form-control btn btn-primary submit px-3">Đăng ký</button>
+                                <button name="btnDangKy"type="submit" class="form-control btn btn-primary submit px-3">Đăng ký</button>
                             </div>
                         </form>
                         <div class="text-center">Bạn đã có tài khoản? <a href="./login.php">đăng nhập</a></div>

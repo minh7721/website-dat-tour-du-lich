@@ -1,4 +1,5 @@
 <?php
+session_start();
 $HOST = 'localhost';
 $USERNAME = 'root';
 $DB_NAME = 'travel';
@@ -13,21 +14,30 @@ if (!$conn) {
 <?php
 if (isset($_POST['btnLogin'])) {
 	$email = $_POST['email'];
-	$pass = $_POST['pass'];
+	$pass_raw = $_POST['pass'];
 	$btnLogin = $_POST['btnLogin'];
-	$sqlCheckU = $conn->prepare("SELECT * FROM user where email = '".$email."'");
+	$sqlCheckU = $conn->prepare("SELECT * FROM user where email = '" . $email . "'");
 	$sqlCheckU->execute();
 	//Thiết lập kiểu dữ liệu trả về
-	$sqlCheckU->setFetchMode(PDO::FETCH_ASSOC);
-		if($sqlCheckU -> rowCount()>0){
-			while($row = $sqlCheckU -> fetch()){
-				if($email = $row['email']){
-					header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
-					// $idKH = $_SESSION
-				}
+	if ($sqlCheckU->rowCount() > 0) {
+		$sqlCheckU->setFetchMode(PDO::FETCH_ASSOC);
+		$row = $sqlCheckU->fetch();
+		$pass_hash = $row['password'];
+		if (password_verify($pass_raw, $pass_hash)) {
+			if (isset($_POST['rememberMe	'])) {
+				setcookie('rememberEmail', $useremail, time() + 300);
+				setcookie('rememberPass', $pass_raw, time() + 300);
 			}
+			$sqlttKH = $conn->prepare("SELECT * FROM khachhang where email = '" . $email . "'");
+			$row1 = $sqlttKH->fetch();
+			$_SESSION['loginOK'] = $email;
+			$_SESSION['loginSuccess'] = "<h1 class='text-success text-center'>Xin chào " . $row1['8'] . "</h1>";
+			header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
+		} else {
+			$_SESSION['titleFalse'] = "<h2 class='text-warning text-center'>Tài khoản hoặc mật khẩu không chính xác</h2>";
 		}
 	}
+}
 ?>
 
 
@@ -53,6 +63,12 @@ if (isset($_POST['btnLogin'])) {
 			<div class="row justify-content-center">
 				<div class="col-md-6 text-center mb-5">
 					<h2 class="heading-section">Đăng nhập</h2>
+					<div class="heading-section">	<?php
+			 if (isset($_SESSION['titleFalse'])) {
+                echo $_SESSION['titleFalse'];
+                unset($_SESSION['titleFalse']);
+            }
+			?></div>
 				</div>
 			</div>
 			<div class="row justify-content-center">
@@ -60,10 +76,16 @@ if (isset($_POST['btnLogin'])) {
 					<div class="login-wrap p-0">
 						<form action="#" class="signin-form" method="POST">
 							<div class="form-group">
-								<input name="email" type="text" class="form-control" placeholder="Email" required>
+								<input value="
+            <?php if (isset($_COOKIE['rememberEmail'])) {
+				echo $_COOKIE['rememberEmail'];
+			} ?>
+            " name="email" type="text" class="form-control" placeholder="Email" required>
 							</div>
 							<div class="form-group">
-								<input name="pass" id="password-field" type="password" class="form-control" placeholder="Password" required>
+								<input value="<?php if (isset($_COOKIE['rememberPass'])) {
+													echo $_COOKIE['rememberPass'];
+												} ?>" name="pass" id="password-field" type="password" class="form-control" placeholder="Password" required>
 								<span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							<div class="form-group">
@@ -71,8 +93,10 @@ if (isset($_POST['btnLogin'])) {
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50">
-									<label class="checkbox-wrap checkbox-primary">Nhớ tôi
-										<input type="checkbox" checked>
+									<label name="rememberMe" class="checkbox-wrap checkbox-primary">Nhớ tôi
+										<input <?php if (isset($_COOKIE['rememberPass'])) {
+													echo "checked";
+												} ?> type="checkbox">
 										<span class="checkmark"></span>
 									</label>
 								</div>
