@@ -76,7 +76,6 @@ include("headfoot/header.php");
 <!-- book section ends -->
 
 <!-- packages section starts  -->
-
 <section class="packages" id="packages">
 
     <h1 class="heading">
@@ -93,6 +92,15 @@ include("headfoot/header.php");
     <div class="showTour">
         <div class="box-container">
             <?php
+
+
+            ?>
+
+            <?php
+            if (isset($_SESSION['idKH'])) {
+                $idKhach = $_SESSION['idKH'];
+            }
+
             foreach ($getAllTour as $getTour) {
             ?>
                 <div class="box">
@@ -116,7 +124,9 @@ include("headfoot/header.php");
                                     <?php echo $getTour['giaBanDau'] ?>
                                 </span>
                             </div>
-                            <a href="?controller=checkout&action=index&idTour=<?php echo $getTour['idTour']?>" class="btn btnDatNgay">Đặt ngay</a>
+                            <a href="?controller=checkout&action=index&idTour=<?php echo $getTour['idTour'] ?> <?php if (isset($_SESSION['idKH'])) {
+                                                                                                                    echo '&idKH='.$_SESSION['idKH'];
+                                                                                                                } ?>" class="btn btnDatNgay">Đặt ngay</a>
                         </div>
                     </a>
                 </div>

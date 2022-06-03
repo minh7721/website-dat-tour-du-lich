@@ -48,7 +48,7 @@
             <a href="hoadon.php"><i class="fas fa-book-open me-3"></i>Hoá đơn</a>
           </li>
           <li>
-            <a href="logout.php"><i class="fas fa-address-card me-3"></i>Đăng xuất</a>
+            <a href="http://localhost/website_book_tour/logout.php"><i class="fas fa-address-card me-3"></i>Đăng xuất</a>
           </li>
         </ul>
         

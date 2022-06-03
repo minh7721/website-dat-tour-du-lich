@@ -91,7 +91,19 @@ if (isset($_GET['idTour'])) {
                                         <br>
                                         <div style="margin-top: 15px;">
                                             <!-- <button id="add_cart" class="btn btn-danger" type="button">Thêm vào giỏ hàng</button> -->
-                                            <a class="btn" href="http://localhost/website_book_tour/customer/?controller=Checkout&action=index&idTour=<?php echo $chiTietTour[0]['idTour']; ?>">Đặt tour ngay</a>
+                                            <?php
+                                            if (isset($_SESSION['idKH'])) {
+                                                $idKhach = $_SESSION['idKH'];
+                                            ?>
+                                                <a class="btn" href="http://localhost/website_book_tour/customer/?controller=Checkout&action=index&idTour=<?php echo $chiTietTour[0]['idTour']; ?>&idKH=<?php echo $idKhach; ?>">Đặt tour ngay</a>
+                                            <?php
+                                            } else {
+                                            ?>
+                                                <a class="btn" href="http://localhost/website_book_tour/login.php">Đặt tour ngay</a>
+                                            <?php
+                                            }
+
+                                            ?>
                                         </div>
                                     </form>
                                 </div>
@@ -150,7 +162,7 @@ if (isset($_GET['idTour'])) {
                                         <h4>LỊCH TRÌNH</h4>
                                     </div>
                                     <div class="noidung fs-3">
-                                    <!-- <label for=""></label> -->
+                                        <!-- <label for=""></label> -->
                                         <span class="nd">
                                             <?php echo $chiTietTour[0]['lichTrinh']; ?>
                                         </span>

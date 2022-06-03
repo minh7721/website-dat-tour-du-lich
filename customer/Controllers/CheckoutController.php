@@ -12,7 +12,8 @@
     
         public function index(){
             $idTour = $_GET['idTour'];
-            $ttKH = $this -> CheckoutModel -> getTTKH(1);
+            $idKH = $_GET['idKH'];
+            $ttKH = $this -> CheckoutModel -> getTTKH($idKH);
             $chiTietTour = $this -> ChiTietTourModel -> chiTietTour($idTour);
             return $this -> view('frontend.customer.checkout', ['thongTinKH' => $ttKH, 'chiTietTour' => $chiTietTour]);
         }

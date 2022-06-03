@@ -16,7 +16,7 @@
 <body>
     <div class="container d-lg-flex">
         <div class="box-1 bg-light user">
-            <div class="d-flex align-items-center mb-3"> <img src="<?= $thongTinKH['avatar']?>" class="pic rounded-circle" alt="">
+            <div class="d-flex align-items-center mb-3"> <img src="<?= $thongTinKH['avatar'] ?>" class="pic rounded-circle" alt="">
                 <p class="ps-2 name"><?php echo $thongTinKH['tenKH'] ?></p>
             </div>
             <div class="box-inner-1 pb-3 mb-3 ">
@@ -57,7 +57,7 @@
                 </div>
                 <form action="">
                     <div class="mb-3">
-                        <p class="dis fw-bold mb-2">Email </p> <input class="form-control" disabled type="email" value="<?= $thongTinKH['emailKH']?>">
+                        <p class="dis fw-bold mb-2">Email </p> <input idKH="<?php echo $thongTinKH['idKH'] ?>" class="form-control emailKH" disabled type="email" value="<?= $thongTinKH['emailKH'] ?>">
                     </div>
                     <div>
                         <p class="dis fw-bold mb-2">Số thẻ ngân hàng</p>
@@ -77,17 +77,17 @@
                                 <option value="4">United States</option>
                             </select>
                             <div class="d-flex"> <input class="form-control zip" type="text" placeholder="ZIP"> <input class="form-control state" type="text" placeholder="State"> </div>
-                            <!-- <div class=" my-3">
-                                <p class="dis fw-bold mb-2">VAT Number</p>
-                                <div class="inputWithcheck"> <input class="form-control" type="text" value="GB012345B9"> <span class="fas fa-check"></span> </div>
-                            </div> -->
+                            <div class=" my-3">
+                                <p class="dis fw-bold mb-2">Số lượng người</p>
+                                <input required class="form-control slNguoi" type="number" value="1" min="1" max="999">
+                            </div>
                             <div class="my-3">
                                 <p class="dis fw-bold mb-2">Mã giảm giá</p> <input class="form-control text-uppercase" type="text" placeholder="Nhập mã giảm giá" value="" id="discount">
                             </div>
                             <div class="d-flex flex-column dis">
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <p>Tổng chi phí</p>
-                                    <p class="priceX"><?= $chiTietTour[0]['giaSauGiam'] ?></p>
+                                    <p class="priceX tongChiPhi" money="<?= $chiTietTour[0]['giaSauGiam'] ?>"><?= $chiTietTour[0]['giaSauGiam'] ?></p>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <div class="d-flex align-items-center">
@@ -97,11 +97,11 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <p>VAT<span>(20%)</span></p>
-                                    <p class="priceX"><?= ($chiTietTour[0]['giaSauGiam'])*20/100 ?></p>
+                                    <p class="priceX thueVAT" money="<?= ($chiTietTour[0]['giaSauGiam']) * 20 / 100 ?>"><?= ($chiTietTour[0]['giaSauGiam']) * 20 / 100 ?></p>
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <p class="fw-bold">Total</p>
-                                    <p class="fw-bold priceX"><?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam']*20/100?></p>
+                                    <p money="<?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?>" class="fw-bold priceX giaCuoiCung"><?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?></p>
                                 </div>
                                 <div class="btn btn-primary mt-2 btnThanhToan">Thanh toán</div>
                             </div>
@@ -172,6 +172,53 @@
         }
     </script>
 
+
+    <script>
+        $(document).ready(function() {
+            $('.btnThanhToan').on('click', function() {
+                const emailKH = $('.emailKH').val();
+                const idKH = $('.emailKH').attr('idKH');
+                const slNguoi = $(".slNguoi").val();
+                console.log(idKH + " có email là " + emailKH + " số lượng người là: " + slNguoi);
+            })
+            $('.slNguoi').on('change', function() {
+                const tongChiPhi = parseFloat($('.tongChiPhi').attr('money'));
+                const thueVAT = parseFloat($('.thueVAT').attr('money'));
+                const giaCuoiCung = parseFloat($('.giaCuoiCung').attr('money'));
+                var slNguoi = $(this).val();
+                if (slNguoi <= 0) {
+                    $('.slNguoi').val(1);
+                    slNguoi = 1;
+                }
+                if (slNguoi >= 1000) {
+                    $('.slNguoi').val(999);
+                    slNguoi = 999;
+                }
+                if (Math.floor(slNguoi) == slNguoi && $.isNumeric(slNguoi)) {
+                    $('.tongChiPhi').html(tongChiPhi * slNguoi);
+                    $('.thueVAT').html(thueVAT * slNguoi);
+                    $('.giaCuoiCung').html(giaCuoiCung * slNguoi);
+                    dauChamSo();
+                } else {
+                    $('.slNguoi').val(Math.round(slNguoi));
+                    slNguoi = Math.round(slNguoi);
+                    if (slNguoi <= 0) {
+                        $('.slNguoi').val(1);
+                        slNguoi = 1;
+                    }
+                    if (slNguoi >= 1000) {
+                        $('.slNguoi').val(999);
+                        slNguoi = 999;
+                    }
+                    $('.tongChiPhi').html(tongChiPhi * slNguoi);
+                    $('.thueVAT').html(thueVAT * slNguoi);
+                    $('.giaCuoiCung').html(giaCuoiCung * slNguoi);
+                    dauChamSo();
+                }
+
+            })
+        })
+    </script>
 </body>
 
 </html>

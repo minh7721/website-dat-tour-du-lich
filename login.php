@@ -20,11 +20,19 @@ if (isset($_POST['btnLogin'])) {
 				setcookie('rememberEmail', $useremail, time() + 300);
 				setcookie('rememberPass', $pass_raw, time() + 300);
 			}
-			$sqlttKH = $conn->prepare("SELECT * FROM khachhang where email = '" . $email . "'");
-			$row1 = $sqlttKH->fetch();
+			$sqlttKH = $conn->prepare("SELECT * FROM khachhang where emailKH = '" . $email . "'");
+			$sqlttKH->execute();
+			$sqlttKH->setFetchMode(PDO::FETCH_ASSOC);
+			$rowTTKH = $sqlttKH->fetch();
 			$_SESSION['loginOK'] = $email;
-			// $_SESSION['loginSuccess'] = "<h1 class='text-success text-center'>Xin chào " . $row1['8'] . "</h1>";
-			header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
+			// $_SESSION['loginSuccess'] = "<h1 class='text-success text-center'>Xin chào " . $rowTTKH['8'] . "</h1>";
+			if($row['status'] == 1){
+				$_SESSION['idKH'] = $rowTTKH['idKH'];
+				header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
+			}
+			if($row['status'] == 0){
+				header("location:http://localhost/website_book_tour/admin/index.php");
+			}
 		} else {
 			$_SESSION['titleFalse'] = "<h2 class='text-warning text-center'>Tài khoản hoặc mật khẩu không chính xác</h2>";
 		}
