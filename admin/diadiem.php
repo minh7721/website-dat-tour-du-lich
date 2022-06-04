@@ -1,6 +1,17 @@
 <?php
 include("header.php")
 ?>
+<form action="diadiem.php" method="get" class="container-md my-3">
+
+<div class="row align-items-center">
+<input type="text" class="form-control" id="sdiadiem" name="sdiadiem" placeholder="Nhập từ khoá">
+
+    <div class="d-flex justify-content-end my-3">
+        <button class="btn btn-success" type="submit">Tìm kiếm</button>
+    </div>
+</div>
+</form>
+
 <main>
     <div class="container-sm my-4">
         <a href="themdiadiem.php" class="btn btn-success">Thêm địa điểm mới</a>
@@ -25,7 +36,15 @@ include("header.php")
                 <?php
                 include("./config/db.php");
 
-                $sql = "SELECT * FROM diadiem";
+                if (isset($_GET["sdiadiem"]) && !empty($_GET["sdiadiem"]))
+                {
+                $key = $_GET["sdiadiem"];
+                $sql = "SELECT * FROM diadiem WHERE idDiaDiem LIKE '%$key%' OR tenDiaDiem LIKE '%$key%' OR quocGia LIKE '%$key%' "; 
+                }
+               
+                
+            else {
+                $sql = "SELECT * FROM diadiem"; }
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {

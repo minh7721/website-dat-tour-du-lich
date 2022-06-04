@@ -2,31 +2,11 @@
 include("header.php")
 ?>
 <main>
-<form action="chiTietKhoaHoc.php" method="get" class="container-md my-3">
+<form action="KS.php" method="get" class="container-md my-3">
+
     <div class="row align-items-center">
-        <div class="form-group col">
-            <label for="nam" class="row-sm-2 row-form-label">Năm</label>
-            <div class="row">
-                <select class="form-select" aria-label="Default select example" name="MaKH" id="MaKH">
-                    <?php
-                    $connect1 = mysqli_connect('localhost', 'root', '', 'baitaploncnw');
-                    if (!$connect1) {
-                        die("Không thể kết nối");
-                    }
-                    $sql1 = "SELECT * FROM khoahoc";
-                    $result1 = mysqli_query($connect1, $sql1);
-                    $count1 = mysqli_num_rows($result1);
-                    if ($count1 > 0) {
-                        while ($row1 = mysqli_fetch_assoc($result1)) {
-                            echo '<option value="' . $row1["MaKH"] . '">';
-                            echo 'Năm: ' . $row1["Ten"] . ' | Kỳ ' . $row1["Ky"];
-                            echo '</option>';
-                        }
-                    }
-                    ?>
-                </select>
-            </div>
-        </div>
+    <input type="text" class="form-control" id="sKS" name="sKS" placeholder="Nhập từ khoá">
+    
         <div class="d-flex justify-content-end my-3">
             <button class="btn btn-success" type="submit">Tìm kiếm</button>
         </div>
@@ -52,9 +32,16 @@ include("header.php")
             <tbody>
                 <?php
                 include("./config/db.php");
-
-                $sql = "SELECT *
-                FROM khachsan";
+                if (isset($_GET["sKS"]) && !empty($_GET["sKS"]))
+                {
+                $key = $_GET["sKS"];
+                $sql = "SELECT * FROM khachsan WHERE idKS LIKE '%$key%' OR tenKS LIKE '%$key%' OR loaiPhong LIKE '%$key%' 
+                OR giaPhong LIKE '%$key%' OR diaChiKS LIKE '%$key%' "; 
+                }
+               
+                
+            else {
+                $sql = "SELECT * FROM khachsan"; }
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {

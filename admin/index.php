@@ -1,6 +1,17 @@
 <?php
 include("header.php")
 ?>
+<form action="Tour.php" method="get" class="container-md my-3">
+
+<div class="row align-items-center">
+<input type="text" class="form-control" id="sTour" name="sTour" placeholder="Nhập từ khoá">
+
+    <div class="d-flex justify-content-end my-3">
+        <button class="btn btn-success" type="submit">Tìm kiếm</button>
+    </div>
+</div>
+</form>
+
 <main>
     <div class="container-sm my-4">
         <a href="themtour.php" class="btn btn-success">Thêm Tour mới</a>
@@ -26,9 +37,14 @@ include("header.php")
             <tbody>
                 <?php
                 include("./config/db.php");
-
-                $sql = "SELECT *
-                FROM tour";
+                if (isset($_GET["sTour"]) && !empty($_GET["sTour"]))
+                {
+                $key = $_GET["sTour"];
+                $sql = "SELECT * FROM tour WHERE idTour LIKE '%$key%' OR tenTour LIKE '%$key%' OR ngayBatDau LIKE '%$key%' 
+                OR ngayKetThuc LIKE '%$key%' OR giaBanDau LIKE '%$key%' OR giaSauGiam LIKE '%$key%' 
+                OR daSuDungHet LIKE '%$key%' "; 
+                }else{
+                $sql = "SELECT * FROM tour";}
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {

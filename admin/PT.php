@@ -2,6 +2,17 @@
 include("header.php")
 ?>
 <main>
+<form action="PT.php" method="get" class="container-md my-3">
+
+<div class="row align-items-center">
+<input type="text" class="form-control" id="sPT" name="sPT" placeholder="Nhập từ khoá">
+
+    <div class="d-flex justify-content-end my-3">
+        <button class="btn btn-success" type="submit">Tìm kiếm</button>
+    </div>
+</div>
+</form>
+
     <div class="container-sm my-4">
         <a href="themPT.php" class="btn btn-success">Thêm phương tiện mới</a>
     </div>
@@ -24,8 +35,15 @@ include("header.php")
                 <?php
                 include("./config/db.php");
 
-                $sql = "SELECT *
-                FROM phuongtien";
+                if (isset($_GET["sPT"]) && !empty($_GET["sPT"]))
+                {
+                $key = $_GET["sPT"];
+                $sql = "SELECT * FROM phuongtien WHERE idPT LIKE '%$key%' OR loaiPhuongTien LIKE '%$key%' OR tenPhuongTien LIKE '%$key%' "; 
+                }
+               
+                
+            else {
+                $sql = "SELECT * FROM phuongtien"; }
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {
