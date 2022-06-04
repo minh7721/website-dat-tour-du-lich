@@ -124,9 +124,18 @@ include("headfoot/header.php");
                                     <?php echo $getTour['giaBanDau'] ?>
                                 </span>
                             </div>
-                            <a href="?controller=checkout&action=index&idTour=<?php echo $getTour['idTour'] ?> <?php if (isset($_SESSION['idKH'])) {
-                                                                                                                    echo '&idKH='.$_SESSION['idKH'];
-                                                                                                                } ?>" class="btn btnDatNgay">Đặt ngay</a>
+                            <?php
+                            if (isset($_SESSION['idKH'])) {
+                                $idKhach = $_SESSION['idKH'];
+                            ?>
+                                <a class="btn btnDatNgay" href="http://localhost/website_book_tour/customer/?controller=Checkout&action=index&idTour=<?php echo $getTour['idTour'] ?>&idKH=<?php echo $_SESSION['idKH']; ?>">Đặt tour ngay</a>
+                            <?php
+                            } else {
+                            ?>
+                                <a class="btn" href="http://localhost/website_book_tour/login.php">Đặt tour ngay</a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </a>
                 </div>

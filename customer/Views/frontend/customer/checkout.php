@@ -101,9 +101,9 @@
                                 </div>
                                 <div class="d-flex align-items-center justify-content-between mb-2">
                                     <p class="fw-bold">Total</p>
-                                    <p money="<?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?>" class="fw-bold priceX giaCuoiCung"><?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?></p>
+                                    <p money="<?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?>" lastMoney="<?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?>" class="fw-bold priceX giaCuoiCung"><?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?></p>
                                 </div>
-                                <div class="btn btn-primary mt-2 btnThanhToan">Thanh toán</div>
+                                <div idTour="<?= $chiTietTour[0]['idTour'] ?>" class="btn btn-primary mt-2 btnThanhToan">Thanh toán</div>
                             </div>
                         </div>
                     </div>
@@ -175,12 +175,6 @@
 
     <script>
         $(document).ready(function() {
-            $('.btnThanhToan').on('click', function() {
-                const emailKH = $('.emailKH').val();
-                const idKH = $('.emailKH').attr('idKH');
-                const slNguoi = $(".slNguoi").val();
-                console.log(idKH + " có email là " + emailKH + " số lượng người là: " + slNguoi);
-            })
             $('.slNguoi').on('change', function() {
                 const tongChiPhi = parseFloat($('.tongChiPhi').attr('money'));
                 const thueVAT = parseFloat($('.thueVAT').attr('money'));
@@ -198,6 +192,7 @@
                     $('.tongChiPhi').html(tongChiPhi * slNguoi);
                     $('.thueVAT').html(thueVAT * slNguoi);
                     $('.giaCuoiCung').html(giaCuoiCung * slNguoi);
+                    $('.giaCuoiCung').attr('lastMoney', giaCuoiCung * slNguoi);
                     dauChamSo();
                 } else {
                     $('.slNguoi').val(Math.round(slNguoi));
@@ -213,9 +208,33 @@
                     $('.tongChiPhi').html(tongChiPhi * slNguoi);
                     $('.thueVAT').html(thueVAT * slNguoi);
                     $('.giaCuoiCung').html(giaCuoiCung * slNguoi);
+                    $('.giaCuoiCung').attr('lastMoney', giaCuoiCung * slNguoi);
                     dauChamSo();
                 }
+            })
 
+            $('.btnThanhToan').on('click', function() {
+                // const emailKH = $('.emailKH').val();
+                const idKH = $('.emailKH').attr('idKH');
+                const slNguoi = $(".slNguoi").val();
+                const idTour = $(this).attr('idTour');
+                const lastMoney = $('.giaCuoiCung').attr('lastMoney');
+                const d = new Date();
+                const thisDay = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + (d.getDay()-2);
+                $.ajax({
+                    url: "http://localhost/website_book_tour/customer/?controller=checkout&action=datTour",
+                    method: "POST",
+                    data: {
+                        idKH: idKH,
+                        slNguoi: slNguoi,
+                        idTour: idTour,
+                        lastMoney: lastMoney,
+                        thisDay: thisDay,
+                    },
+                    success: function() {
+                        console.log('Insert thành công');
+                    }
+                })
             })
         })
     </script>
