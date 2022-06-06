@@ -71,7 +71,7 @@ session_start();
                 <li>
                     <?php
                     if (isset($_SESSION['idKH'])) {
-                        echo '<a class="fs-3 text-dark dropdown-item" href="?controller=quanLyTour&action=index&idKH=' . $_SESSION['idKH'] . '">Cá nhân</a>';
+                        echo '<a class="fs-3 text-dark dropdown-item" href="?controller=quanLyTour&action=index&idKH=' . $_SESSION['idKH'] . '">Quản lý tour</a>';
                     }
                     ?>
                 </li>

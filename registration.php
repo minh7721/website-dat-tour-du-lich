@@ -82,7 +82,7 @@ require './sendEmail/SMTP.php';
                         //  Mail body content 
                         $bodyContent = '<h2><p>Xin chào<p></h2>';
                         // $bodyContent .= '<p>Nhấn vào đây để kích hoạt <a href="http://localhost/cnwebb/dhtl_danhba/xacnhanEmail.php?email=&code=">Xác nhận</a></p>';
-                        $bodyContent .= '<p>Nhấn vào đây để kích hoạt <a href="http://localhost/website_book_tour/login.php">Xác nhận</a></p>';
+                        $bodyContent .= '<p>Nhấn vào đây để kích hoạt <a href="https://minh7721.github.io/sound-mp3">Xác nhận</a></p>';
                         $bodyContent .= '<p>Vui lòng không trả lời thư này .</p>';
                         $bodyContent .= '<p><b>Trân trọng cảm ơn !</b></p>';
                         $bodyContent .= '<p><b>Chào !Thân ái!</b></p>';
