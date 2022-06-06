@@ -48,7 +48,7 @@
             <a href="hoadon.php"><i class="fas fa-book-open me-3"></i>Hoá đơn</a>
           </li>
           <li>
-            <a href="http://localhost/website_book_tour/logout.php"><i class="fas fa-address-card me-3"></i>Đăng xuất</a>
+            <a href="./logout.php"><i class="fas fa-address-card me-3"></i>Đăng xuất</a>
           </li>
         </ul>
         
@@ -58,20 +58,17 @@
     <!-- Page Content  -->
     <div id="content" class="p-4 p-md-5">
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
 
-    <button type="button" id="sidebarCollapse" class="btn btn-primary">
-      <i class="fa fa-bars"></i>
-      <span class="sr-only">Toggle Menu</span>
-    </button>
-    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa fa-bars"></i>
-    </button>
+          <button type="button" id="sidebarCollapse" class="btn btn-primary">
+            <i class="fa fa-bars"></i>
+            <span class="sr-only">Toggle Menu</span>
+          </button>
+          
 
-    <a href="thongTinAdmin.php">
-      <img src="http://www.tlu.edu.vn/Portals/0/2014/Logo-WRU.png" alt="Đại học TL" height="43" width="50">
-    </a>
-  </div>
-</nav>
-      
+          <a >
+            <img src="http://www.tlu.edu.vn/Portals/0/2014/Logo-WRU.png" alt="Đại học TL" height="43" width="50">
+          </a>
+        </div>
+      </nav>

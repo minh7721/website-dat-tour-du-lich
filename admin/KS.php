@@ -2,6 +2,16 @@
 include("header.php")
 ?>
 <main>
+<form action="KS.php" method="get" class="container-md my-3">
+
+    <div class="row align-items-center">
+    <input type="text" class="form-control" id="sKS" name="sKS" placeholder="Nhập từ khoá">
+    
+        <div class="d-flex justify-content-end my-3">
+            <button class="btn btn-success" type="submit">Tìm kiếm</button>
+        </div>
+    </div>
+</form>
     <div class="container-sm my-4">
         <a href="themKS.php" class="btn btn-success">Thêm KS mới</a>
     </div>
@@ -22,9 +32,16 @@ include("header.php")
             <tbody>
                 <?php
                 include("./config/db.php");
-
-                $sql = "SELECT *
-                FROM khachsan";
+                if (isset($_GET["sKS"]) && !empty($_GET["sKS"]))
+                {
+                $key = $_GET["sKS"];
+                $sql = "SELECT * FROM khachsan WHERE idKS LIKE '%$key%' OR tenKS LIKE '%$key%' OR loaiPhong LIKE '%$key%' 
+                OR giaPhong LIKE '%$key%' OR diaChiKS LIKE '%$key%' "; 
+                }
+               
+                
+            else {
+                $sql = "SELECT * FROM khachsan"; }
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {

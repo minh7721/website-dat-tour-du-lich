@@ -8,9 +8,8 @@ a {
     /* margin-left: 2rem; */
     /* margin-bottom: 2rem; */
 }
-
-.moTaDiaDiem {
-    height: 300px;
+.packages .box-container .box .content p {
+    height: 200px;
     text-overflow: ellipsis;
     display: block;
 }

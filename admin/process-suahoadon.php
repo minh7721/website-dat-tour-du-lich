@@ -10,7 +10,7 @@ $idTour = $_POST["idTour"];
 include("./config/db.php");
 $sql = "UPDATE `hoadon` 
 SET `idHoaDon`='$idHoaDon',`ngayDatTour`='$ngayDatTour',`soLuongNguoi`='$soLuongNguoi',`tongTien`='$tongTien'
-,`idKhachHang`='$idKhachHang',`idTour`='$idTour'";
+,`idKhachHang`='$idKhachHang',`idTour`='$idTour' where  `idDHoaDon`='$idDHoaDon'";
 
 
 

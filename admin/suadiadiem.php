@@ -13,6 +13,8 @@ $tenDiaDiem = $row["tenDiaDiem"];
 $quocGia = $row["quocGia"];
 $moTaDiaDiem = $row["moTaDiaDiem"];
 $anhDiaDiem = $row["anhDiaDiem"];
+$anhDiaDiem2 = $row["anhDiaDiem2"];
+$anhDiaDiem3 = $row["anhDiaDiem3"];
     }
 }
 ?>
@@ -59,6 +61,24 @@ $anhDiaDiem = $row["anhDiaDiem"];
                 <div class="col-sm-10">
                 <?php
                     echo '<input type="text" class="form-control" id="anhDiaDiem" name="anhDiaDiem" value = "'.$anhDiaDiem.'">'
+                ?>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="empPosition" class="col-sm-2 col-form-label">Ảnh 2</label>
+                <div class="col-sm-10">
+                <?php
+                    echo '<input type="text" class="form-control" id="anhDiaDiem2" name="anhDiaDiem2" value = "'.$anhDiaDiem2.'">'
+                ?>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="empPosition" class="col-sm-2 col-form-label">Ảnh 3</label>
+                <div class="col-sm-10">
+                <?php
+                    echo '<input type="text" class="form-control" id="anhDiaDiem3" name="anhDiaDiem3" value = "'.$anhDiaDiem3.'">'
                 ?>
 
                 </div>

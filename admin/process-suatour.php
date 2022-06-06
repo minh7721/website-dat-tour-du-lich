@@ -18,7 +18,6 @@ SET `idTour`='$idTour',`tenTour`='$tenTour',`ngayBatDau`='$ngayBatDau',`ngayKetT
 ,`idKhachSan`='$idKhachSan',`idPhuongTien`='$idPhuongTien',`lichTrinh`='$lichTrinh'
 WHERE `idTour`='$idTour'";
 
-
 echo $idTour;
 $result = mysqli_query($connect,$sql);
 
