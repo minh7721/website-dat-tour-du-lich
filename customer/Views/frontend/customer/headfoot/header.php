@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    // if(!isset($_SESSION['loginOK'])){
-    //     header('location: http://localhost/website_book_tour/login.php');
-    // }
+session_start();
+// if(!isset($_SESSION['loginOK'])){
+//     header('location: http://localhost/website_book_tour/login.php');
+// }
 ?>
 
 
@@ -19,7 +19,7 @@
 
     <!-- font awesome cdn link  -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- custom css file link  -->
     <link rel="stylesheet" href="public/css/style.css">
     <link rel="stylesheet" href="public/css/customer.css">
@@ -55,15 +55,46 @@
 
             </div>
         </div>
-        
-        <?php
-            if(isset($_SESSION['loginOK'])){
-                echo '<a class="fs-4 text-white" href="http://localhost/website_book_tour/logout.php">Đăng xuất</a>';
-            }
-            else{
-                echo '<a class="fs-4 text-white" href="http://localhost/website_book_tour/login.php">Đăng nhập</a>';
-            }
-        ?>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link fs-2 text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user fs-2 text-white"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li>
+                    <?php
+                    if (isset($_SESSION['idKH'])) {
+                        echo '<a class="dropdown-item fs-3 text-dark" href="?controller=customer&action=profile&idKH=' . $_SESSION['idKH'] . '">Thông tin cá nhân</a>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    if (isset($_SESSION['idKH'])) {
+                        echo '<a class="fs-3 text-dark dropdown-item" href="?controller=quanLyTour&action=index&idKH=' . $_SESSION['idKH'] . '">Cá nhân</a>';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    if (isset($_SESSION['idKH'])) {
+                      echo '<hr class="dropdown-divider">';
+                    }
+                    ?>
+                </li>
+                <li>
+                    <?php
+                    if (isset($_SESSION['loginOK'])) {
+                        echo '<a class="fs-3 text-dark dropdown-item" href="http://localhost/website_book_tour/logout.php">Đăng xuất</a>';
+                    } else {
+                        echo '<a class="fs-3 text-dark dropdown-item" href="http://localhost/website_book_tour/login.php">Đăng nhập</a>';
+                    }
+                    ?>
+                </li>
+            </ul>
+        </li>
+
+
         <form action="" class="search-bar-container">
             <input type="search" id="search-bar" placeholder="Nhập địa điểm bạn muốn đến...">
             <label for="search-bar" class="fas fa-search"></label>

@@ -66,7 +66,9 @@ class CusTomerController extends BaseController
     return $this->view('frontend.customer.thongTinTour', ['getAllTour' => $getTourPT, 'soTrang' => $soTrang]);
   }
 
-
+  public function profile(){
+    return $this->view('frontend.customer.profile');
+  }
 
   //   public function getAllLoaiHang()
   //   {
