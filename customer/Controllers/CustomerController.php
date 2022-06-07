@@ -8,10 +8,9 @@ class CusTomerController extends BaseController
   }
   public function index()
   {
-    if(isset($_POST['page'])){
+    if (isset($_POST['page'])) {
       $page = $_POST['page'];
-    }
-    else {
+    } else {
       $page = 0;
     }
     $getAllTour = $this->CustomerModel->getTour();
@@ -19,7 +18,7 @@ class CusTomerController extends BaseController
     $slTours = $slTour['slSP'];
     $limit = 3;
     $soTrang = ceil($slTours / $limit);
-    $getTourPT = $this -> CustomerModel -> getTourPT($page, $limit);
+    $getTourPT = $this->CustomerModel->getTourPT($page, $limit);
     return $this->view('frontend.customer.index', ['getAllTour' => $getAllTour, 'soTrang' => $soTrang]);
   }
 
@@ -50,90 +49,53 @@ class CusTomerController extends BaseController
     return $this->view('frontend.customer.index', ['soTrang' => $soTrang]);
   }
 
-  public function getTourPT(){
-    if(isset($_POST['page'])){
+  public function getTourPT()
+  {
+    if (isset($_POST['page'])) {
       $page = $_POST['page'];
-    }
-    else {
+    } else {
       $page = 1;
     }
     $slTour = $this->CustomerModel->countTour();
     $slTours = $slTour['slSP'];
     $limit = 3;
-    $start = $limit*($page-1);
+    $start = $limit * ($page - 1);
     $soTrang = ceil($slTours / $limit);
-    $getTourPT = $this -> CustomerModel -> getTourPT($start, $limit);
+    $getTourPT = $this->CustomerModel->getTourPT($start, $limit);
     return $this->view('frontend.customer.thongTinTour', ['getAllTour' => $getTourPT, 'soTrang' => $soTrang]);
   }
 
-  public function profile(){
-    return $this->view('frontend.customer.profile');
+  public function profile()
+  {
+    $idKH = $_GET['idKH'];
+    $thongTinKH = $this->CustomerModel->thongTinKH($idKH);
+    // echo "<pre>";
+    // print_r($thongTinKH);
+    // echo "</pre>";
+    return $this->view('frontend.customer.profile', ['thongTinKH' => $thongTinKH]);
   }
 
-  //   public function getAllLoaiHang()
-  //   {
-  //     $getAllLoaiHang = $this->CustomerModel->getAllLoaiHang();
-  //     // return $this-> view('frontend.customer.index',['getAllLoaiHang' => $getAllLoaiHang]);
-  //     echo "<pre>";
-  //     print_r($getAllLoaiHang);
-  //     echo "</pre>";
-  //   }
+  public function uploadimg(){
+    $Avatar = basename($_FILES['file']['name']);
+    $fileAvatar = "public/images/avatarKH/".$Avatar;
+    // $validates = array('.jpg', '.png', '.jpeg');
+    move_uploaded_file($_FILES["file"]["tmp_name"], $fileAvatar);
+  }
 
-  //   public function getAllSP()
-  //   {
-  //     $getAllSP = $this->CustomerModel->getAllSP();
-  //     // return $this -> view('frontend.customer.index', ['getAllSP' => $getAllSP]);
-  //   }
+  public function updateTTKH(){
+    if(isset($_POST['urlAvatar'])){
+      $urlAvatar = $_POST['urlAvatar'];
+    }
+    else{
+      $urlAvatar = "";
+    }
+    $idKH = $_POST['idKH'];
+    $hoTenKH = $_POST['hoTenKH'];
+    $soDTKH = $_POST['soDTKH'];
+    $emailKH = $_POST['emailKH'];
+    $ngaySinhKH = $_POST['ngaySinhKH'];
+    $diaChiKH = $_POST['diaChiKH'];
 
-  //   public function getSPLH()
-  //   {
-  //     $idLH = $_POST['idLH'];
-  //     if(isset($_POST['current_page'])){
-  //       $current_pages = $_POST['current_page'];
-  //     }
-  //     else {
-  //       $current_pages = 1;
-  //     }
-  //     $step = 4;
-  //     $slSP = $this->CustomerModel->countProduct($idLH);
-  //     $soTrang = ceil($slSP / $step);
-  //     $current_page = ($current_pages - 1)*$step;
-  //     $getProducts = $this->CustomerModel->getProductByPages($idLH, $current_page, $step);
-  //     return $this->view(
-  //       'frontend.customer.product_action',
-  //       ['getProducts' => $getProducts, 'soTrang' => $soTrang, "current_page" => $current_page, "idLH" => $idLH]
-  //     );
-  //   }
-
-  //   public function search()
-  //   {
-  //     $keySearch = $_POST['keySearch'];
-  //     $listSP = $this->CustomerModel->search($keySearch);
-  //     return $this->view(
-  //       'frontend.customer.product_action',
-  //       ['getProducts' => $listSP]
-  //     );
-  //   }
-
-  //   public function changePrice()
-  //   {
-  //     $maxPrice = $_POST['maxPrice'];
-  //     $idLH = $_POST['idLH'];
-  //     $listSP = $this->CustomerModel->changePrice($idLH, $maxPrice);
-  //     return $this->view(
-  //       'frontend.customer.product_action',
-  //       ['getProducts' => $listSP]
-  //     );
-  //   }
-
-  //   public function countProduct()
-  //   {
-  //     $idLH = $_POST['idLH'];
-  //     $slSP = $this->CustomerModel->countProduct($idLH);
-  //     $soTrang = ceil($slSP / 4);
-  //     return $this->view(
-  //       'frontend.customer.product_action',
-  //       ['soTrang' => $soTrang]
-  //     );
-  //   }
+    $this -> CustomerModel -> updateTTKH($idKH, $hoTenKH, $soDTKH, $emailKH, $ngaySinhKH, $urlAvatar, $diaChiKH);
+  }
 }

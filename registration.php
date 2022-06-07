@@ -35,7 +35,7 @@ require './sendEmail/SMTP.php';
         $birthday = $_POST['birthday'];
         $pass1 = $_POST['pass1'];
         $pass2 = $_POST['pass2'];
-
+        $linkAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEBBlPGF0oyXLLs6eUIbQtpBR3xEyd0VLRaQ&usqp=CAU";
         $sqlcheckEmail = $conn->prepare("SELECT * FROM user where email = '$email'");
         $sqlcheckEmail->execute();
         if ($sqlcheckEmail->rowCount() > 0) {
@@ -51,8 +51,8 @@ require './sendEmail/SMTP.php';
                     $sqlcheckEmail->execute();
                     $row = $sqlcheckEmail->fetch();
                     $idUser = $row['idU'];
-                    $sqlInputKH = $conn->prepare("INSERT INTO khachhang(tenKH, emailKh, soDTKH, ngaySinh, idU) 
-                                                    values('$name', '$email', '$phone', '$birthday', $idUser)");
+                    $sqlInputKH = $conn->prepare("INSERT INTO khachhang(tenKH, emailKh, soDTKH, ngaySinh, idU, avatar) 
+                                                    values('$name', '$email', '$phone', '$birthday', $idUser, '$linkAvatar')");
                     $sqlInputKH->execute();
                     $_SESSION['check-email'] = "<h3 class='text-white text-center'>Vui lòng kiểm tra email để kích hoạt tài khoản</h3>";
                     header('location: login.php');

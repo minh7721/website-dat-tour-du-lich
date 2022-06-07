@@ -27,9 +27,6 @@ class CheckoutController extends BaseController
         $idTour = $_POST['idTour'];
         $tongTien = $_POST['lastMoney'];
         $ngayDatTour = $_POST['thisDay'];
-
         $this-> CheckoutModel -> datTour($ngayDatTour, $slNguoi, $tongTien, $idKH, $idTour);
-        // echo($sql);
-        header('location: http://localhost/website_book_tour/customer/?controller=customer&action=index');
     }
 }
