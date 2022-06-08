@@ -1,3 +1,5 @@
+
+
 <?php
 
 $idHoaDon = $_POST["idHoaDon"];
@@ -10,10 +12,10 @@ $idTour = $_POST["idTour"];
 include("./config/db.php");
 $sql = "UPDATE `hoadon` 
 SET `idHoaDon`='$idHoaDon',`ngayDatTour`='$ngayDatTour',`soLuongNguoi`='$soLuongNguoi',`tongTien`='$tongTien'
-,`idKhachHang`='$idKhachHang',`idTour`='$idTour' where  `idDHoaDon`='$idDHoaDon'";
+,`idKhachHang`='$idKhachHang',`idTour`='$idTour'
+WHERE `idHoaDon`='$idHoaDon'";
 
-
-
+echo $idHoaDon;
 $result = mysqli_query($connect,$sql);
 
 if($result > 0){

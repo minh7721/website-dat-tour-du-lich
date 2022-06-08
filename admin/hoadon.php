@@ -26,8 +26,8 @@ include("header.php")
                 <th scope="col">Tổng tiền</th>
                 <th scope="col">ID khách hàng</th>
                 <th scope="col">Tên khách hàng</th>
-                <th scope="col">ID tour</th>
-               
+                <th scope="col">ID Tour</th>
+                <th scope="col">Tên Tour</th>
                     <th scope="col">Sửa</th>
                     <th scope="col">Xóa</th>
                 </tr>
@@ -45,7 +45,7 @@ include("header.php")
                
                 
             else {
-                $sql = "SELECT * FROM hoadon,khachhang WHERE idkhachhang=idKH"; }
+                $sql = "SELECT * FROM hoadon,khachhang,tour WHERE idkhachhang=idKH AND tour.idTour=hoadon.idTour"; }
                 $result = mysqli_query($connect, $sql);
                 $count = mysqli_num_rows($result);
                 if ($count > 0) {
@@ -58,6 +58,7 @@ include("header.php")
                         echo '<td>' . $row['idKhachHang'] . '</td>';
                         echo '<td>' . $row['tenKH'] . '</td>';
                         echo '<td>' . $row['idTour'] . '</td>';
+                        echo '<td>' . $row['tenTour'] . '</td>';
                         
                         echo '<td><a href="suahoadon.php?idHoaDon=' . $row['idHoaDon'] . '"><i class="fas fa-edit"></i></a></td>';
                         echo '<td><a href="xoahoadon.php?idHoaDon=' . $row['idHoaDon'] . '"><i class="fas fa-trash-alt"></i></a></td>';

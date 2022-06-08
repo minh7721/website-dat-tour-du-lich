@@ -27,7 +27,7 @@ $anhPT = $row["anhPT"];
                 <label for="empPosition" class="col-sm-2 col-form-label">ID phương tiện</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="int" class="form-control" id="idPT" name="idPT" value = "'.$idPT.'">'
+                    echo '<input type="int" class="form-control" id="idPT" name="idPT" value = "'.$idPT.'" readonly>'
                 ?>
                 </div>
                 </div>

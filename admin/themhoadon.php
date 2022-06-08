@@ -22,7 +22,7 @@ include("./header.php");
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Số lượng người</label>
                 <div class="col-sm-10">
-                <input type="int" class="form-control" id="soLuongNguoi" name="soLuongNguoi">
+                <input type="number" class="form-control" id="soLuongNguoi" name="soLuongNguoi" min="1">
                 </div>
             </div>
             <div class="form-group row">
@@ -32,7 +32,7 @@ include("./header.php");
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID khách hàng</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Khách hàng</label>
                 <div class="col-sm-10">
                 <select class="form-select" aria-label="Default select example" name="idKhachHang" id="idKhachHang">
                         <?php
@@ -42,7 +42,7 @@ include("./header.php");
                         $count = mysqli_num_rows($result);
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<option value=' . $row["idKH"] . '>' . $row["idKH"] . '</option>';
+                                echo '<option value=' . $row["idKH"] . '>' . $row["tenKH"] . '</option>';
                             }
                         }
                         ?>
@@ -50,7 +50,7 @@ include("./header.php");
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID tour</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Tên tour</label>
                 <div class="col-sm-10">
                 <select class="form-select" aria-label="Default select example" name="idTour" id="idTour">
                         <?php
@@ -60,7 +60,7 @@ include("./header.php");
                         $count = mysqli_num_rows($result);
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<option value=' . $row["idTour"] . '>' . $row["idTour"] . '</option>';
+                                echo '<option value=' . $row["idTour"] . '>' . $row["tenTour"] . '</option>';
                             }
                         }
                         ?>

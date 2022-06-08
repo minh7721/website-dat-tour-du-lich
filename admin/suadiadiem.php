@@ -27,7 +27,7 @@ $anhDiaDiem3 = $row["anhDiaDiem3"];
                 <label for="empPosition" class="col-sm-2 col-form-label">ID Địa Điểm</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="text" class="form-control" id="idDiaDiem" name="idDiaDiem" value = "'.$idDiaDiem.'">'
+                    echo '<input type="text" class="form-control" id="idDiaDiem" name="idDiaDiem" value = "'.$idDiaDiem.'" readonly>'
                 ?>
                 </div>
                 </div>

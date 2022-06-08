@@ -28,7 +28,7 @@ include("./header.php");
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Số điện thoại</label>
                 <div class="col-sm-10">
-                <input type="int" class="form-control" id="soDTKH" name="soDTKH">
+                <input type="tel" class="form-control" id="soDTKH" name="soDTKH">
                 </div>
             </div>
             <div class="form-group row">

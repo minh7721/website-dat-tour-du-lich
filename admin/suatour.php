@@ -34,7 +34,7 @@ $lichTrinh = $row["lichTrinh"];
                 <label for="empPosition" class="col-sm-2 col-form-label">ID Tour</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="text" class="form-control" id="idTour" name="idTour" value = "'.$idTour.'">'
+                    echo '<input type="text" class="form-control" id="idTour" name="idTour" value = "'.$idTour.'"readonly>'
                 ?>
                 </div>
                 </div>
@@ -55,6 +55,7 @@ $lichTrinh = $row["lichTrinh"];
                 ?>
                 </div>
             </div>
+
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Ngày kết thúc</label>
                 <div class="col-sm-10">
@@ -63,11 +64,15 @@ $lichTrinh = $row["lichTrinh"];
                 ?>
                 </div>
             </div>
+
+           
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Giá ban đầu</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="text" class="form-control" id="giaBanDau" name="giaBanDau" value = "'.$giaBanDau.'">'
+                
+                    echo '<input type="number" class="form-control" id="giaBanDau" name="giaBanDau" value = "'.$giaBanDau.'">'
+                    
                 ?>
                 </div>
             </div>
@@ -75,7 +80,7 @@ $lichTrinh = $row["lichTrinh"];
                 <label for="empPosition" class="col-sm-2 col-form-label">Giá sau giảm</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="text" class="form-control" id="giaSauGiam" name="giaSauGiam" value = "'.$giaSauGiam.'">'
+                    echo '<input type="number" class="form-control" id="giaSauGiam" name="giaSauGiam" value = "'.$giaSauGiam.'" >'
                 ?>
                 </div>
             </div>
@@ -83,12 +88,12 @@ $lichTrinh = $row["lichTrinh"];
                 <label for="empPosition" class="col-sm-2 col-form-label">Đã sử dụng hết</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="text" class="form-control" id="daSuDungHet" name="daSuDungHet" value = "'.$daSuDungHet.'">'
+                    echo '<input type="number" class="form-control" id="daSuDungHet" name="daSuDungHet" value = "'.$daSuDungHet.'" min="0" max="1">'
                 ?>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID địa điểm</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Địa điểm</label>
                 <div class="col-sm-10">
                 <select class="form-select" aria-label="Default select example" name="idDiaDiem" id="idDiaDiem">
                         <?php
@@ -99,9 +104,9 @@ $lichTrinh = $row["lichTrinh"];
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 if ($row["idDiaDiem"] == $idDiaDiem)
-                                    echo '<option value=' . $row["idDiaDiem"] . ' selected = "selected">' . $row["idDiaDiem"] . '</option>';
+                                    echo '<option value=' . $row["idDiaDiem"] . ' selected = "selected">' . $row["tenDiaDiem"] . '</option>';
                                 else
-                                    echo '<option value=' . $row["idDiaDiem"] . ' >' . $row["idDiaDiem"] . '</option>';
+                                    echo '<option value=' . $row["idDiaDiem"] . ' >' . $row["tenDiaDiem"] . '</option>';
                             }
                         }
                         ?>
@@ -112,7 +117,7 @@ $lichTrinh = $row["lichTrinh"];
 
             </div>
              <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID khách sạn</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Khách sạn</label>
                 <div class="col-sm-10">
                 <select class="form-select" aria-label="Default select example" name="idKhachSan" id="idKhachSan">
                         <?php
@@ -123,9 +128,9 @@ $lichTrinh = $row["lichTrinh"];
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 if ($row["idKS"] == $idKhachSan)
-                                    echo '<option value=' . $row["idKS"] . ' selected = "selected">' . $row["idKS"] . '</option>';
+                                    echo '<option value=' . $row["idKS"] . ' selected = "selected">' . $row["tenKS"] . '</option>';
                                 else
-                                    echo '<option value=' . $row["idKS"] . ' >' . $row["idKS"] . '</option>';
+                                    echo '<option value=' . $row["idKS"] . ' >' . $row["tenKS"] . '</option>';
                             }
                         }
                         ?>
@@ -133,7 +138,7 @@ $lichTrinh = $row["lichTrinh"];
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID phương tiện</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Phương tiện</label>
                 <div class="col-sm-10">
                 <select class="form-select" aria-label="Default select example" name="idPhuongTien" id="idPhuongTien">
                         <?php
@@ -144,9 +149,9 @@ $lichTrinh = $row["lichTrinh"];
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
                                 if ($row["idPT"] == $idPhuongTien)
-                                    echo '<option value=' . $row["idPT"] . ' selected = "selected">' . $row["idPT"] . '</option>';
+                                    echo '<option value=' . $row["idPT"] . ' selected = "selected">' . $row["tenPhuongTien"] . '</option>';
                                 else
-                                    echo '<option value=' . $row["idPT"] . ' >' . $row["idPT"] . '</option>';
+                                    echo '<option value=' . $row["idPT"] . ' >' . $row["tenPhuongTien"] . '</option>';
                             }
                         }
                         ?>
