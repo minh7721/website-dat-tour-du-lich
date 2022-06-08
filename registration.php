@@ -31,8 +31,8 @@ require './sendEmail/SMTP.php';
     if (isset($_POST['btnDangKy'])) {
         $name = $_POST['name'];
         $email = $_POST['email'];
-        $phone = $_POST['phone'];
-        $birthday = $_POST['birthday'];
+       
+        
         $pass1 = $_POST['pass1'];
         $pass2 = $_POST['pass2'];
         $linkAvatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSEBBlPGF0oyXLLs6eUIbQtpBR3xEyd0VLRaQ&usqp=CAU";
@@ -51,8 +51,8 @@ require './sendEmail/SMTP.php';
                     $sqlcheckEmail->execute();
                     $row = $sqlcheckEmail->fetch();
                     $idUser = $row['idU'];
-                    $sqlInputKH = $conn->prepare("INSERT INTO khachhang(tenKH, emailKh, soDTKH, ngaySinh, idU, avatar) 
-                                                    values('$name', '$email', '$phone', '$birthday', $idUser, '$linkAvatar')");
+                    $sqlInputKH = $conn->prepare("INSERT INTO khachhang(tenKH, emailKh) 
+                                                    values('$name', '$email')");
                     $sqlInputKH->execute();
                     $_SESSION['check-email'] = "<h3 class='text-white text-center'>Vui lòng kiểm tra email để kích hoạt tài khoản</h3>";
                     header('location: login.php');
@@ -137,12 +137,8 @@ require './sendEmail/SMTP.php';
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
-                            <div class="form-group">
-                                <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="date" name="birthday" class="form-control" placeholder="Ngày sinh" required>
-                            </div>
+                            
+                           
                             <div class="form-group">
                                 <input id="password-field" name="pass1" type="password" class="form-control" placeholder="Mật khẩu" required>
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
