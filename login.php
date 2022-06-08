@@ -16,8 +16,8 @@ if (isset($_POST['btnLogin'])) {
 		$row = $sqlCheckU->fetch();
 		$pass_hash = $row['password'];
 		if (password_verify($pass_raw, $pass_hash)) {
-			if (isset($_POST['rememberMe	'])) {
-				setcookie('rememberEmail', $useremail, time() + 300);
+			if (isset($_POST['rememberMe'])) {
+				setcookie('rememberEmail', $email, time() + 300);
 				setcookie('rememberPass', $pass_raw, time() + 300);
 			}
 			$sqlttKH = $conn->prepare("SELECT * FROM khachhang where emailKH = '" . $email . "'");
@@ -82,11 +82,9 @@ if (isset($_POST['btnLogin'])) {
 					<div class="login-wrap p-0">
 						<form action="#" class="signin-form" method="POST">
 							<div class="form-group">
-								<input value="
-            <?php if (isset($_COOKIE['rememberEmail'])) {
+								<input value="<?php if (isset($_COOKIE['rememberEmail'])) {
 				echo $_COOKIE['rememberEmail'];
-			} ?>
-            " name="email" type="text" class="form-control" placeholder="Email" required>
+			} ?>" name="email" type="text" class="form-control" placeholder="Email" required>
 							</div>
 							<div class="form-group">
 								<input value="<?php if (isset($_COOKIE['rememberPass'])) {
@@ -99,8 +97,8 @@ if (isset($_POST['btnLogin'])) {
 							</div>
 							<div class="form-group d-md-flex">
 								<div class="w-50">
-									<label name="rememberMe" class="checkbox-wrap checkbox-primary">Nhớ tôi
-										<input <?php if (isset($_COOKIE['rememberPass'])) {
+									<label class="checkbox-wrap checkbox-primary">Nhớ tôi
+										<input name="rememberMe" <?php if (isset($_COOKIE['rememberPass'])) {
 													echo "checked";
 												} ?> type="checkbox">
 										<span class="checkmark"></span>
