@@ -69,14 +69,6 @@
                             <p class="dis fw-bold mb-2">Tên chủ thẻ</p> <input class="form-control" type="text">
                         </div>
                         <div class="address">
-                            <p class="dis fw-bold mb-3">Địa chỉ thanh toán</p> <select class="form-select" aria-label="Default select example">
-                                <option selected hidden>Việt Nam</option>
-                                <option value="1">India</option>
-                                <option value="2">Australia</option>
-                                <option value="3">Canada</option>
-                                <option value="4">United States</option>
-                            </select>
-                            <div class="d-flex"> <input class="form-control zip" type="text" placeholder="ZIP"> <input class="form-control state" type="text" placeholder="State"> </div>
                             <div class=" my-3">
                                 <p class="dis fw-bold mb-2">Số lượng người</p>
                                 <input required class="form-control slNguoi" type="number" value="1" min="1" max="999">
