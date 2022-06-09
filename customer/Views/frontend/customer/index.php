@@ -33,14 +33,12 @@ include("headfoot/header.php");
 <section class="book" id="book">
 
     <h1 class="heading">
-        <span>b</span>
-        <span>o</span>
-        <span>o</span>
-        <span>k</span>
-        <span class="space"></span>
-        <span>n</span>
-        <span>o</span>
-        <span>w</span>
+        <span>S</span>
+        <span>e</span>
+        <span>a</span>
+        <span>r</span>
+        <span>c</span>
+        <span>h</span>
     </h1>
 
     <div class="row">
@@ -52,21 +50,18 @@ include("headfoot/header.php");
         <form action="">
             <div class="inputBox">
                 <h3>Bạn muốn đến đâu</h3>
-                <input type="text" placeholder="Tên địa điểm">
+                <input class="searchName" type="text" placeholder="Tên địa điểm">
             </div>
-            <div class="inputBox">
-                <h3>Có bao nhiêu người</h3>
-                <input type="number" placeholder="Số lượng người">
-            </div>
-            <div class="inputBox">
+            <!-- <div class="inputBox">
                 <h3>Ngày bắt đầu</h3>
                 <input type="date">
             </div>
             <div class="inputBox">
                 <h3>Ngày kết thúc</h3>
                 <input type="date">
-            </div>
-            <input type="submit" class="btn" value="Đặt ngay">
+            </div> -->
+            <!-- <input type="submit" class="btn btnSearch" value="Tìm kiếm ngay"> -->
+            <button class="btn btnSearch">Tìm kiếm ngay</button>
         </form>
 
     </div>
@@ -91,11 +86,6 @@ include("headfoot/header.php");
 
     <div class="showTour">
         <div class="box-container">
-            <?php
-
-
-            ?>
-
             <?php
             if (isset($_SESSION['idKH'])) {
                 $idKhach = $_SESSION['idKH'];

@@ -60,4 +60,18 @@ class CustomerModel extends BaseModel
                 where idKH = $idKH";
         $this->query($sql);
     }
+
+    public function searchTour($valSearch, $cr_page, $limit)
+    {
+        $sql = "SELECT * FROM tour, diadiem, khachsan, phuongtien 
+        where tenDiaDiem like '%$valSearch%'
+        and tour.idDiaDiem = diadiem.idDiaDiem and tour.idPhuongTien = phuongtien.idPT and tour.idKhachSan = khachsan.idKS
+        limit $cr_page,$limit";
+        $query = $this->query($sql);
+        $ar = [];
+        while ($row = $query->fetch()) {
+            array_push($ar, $row);
+        }
+        return $ar;
+    }
 }

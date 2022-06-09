@@ -19,7 +19,7 @@ class CusTomerController extends BaseController
     $limit = 3;
     $soTrang = ceil($slTours / $limit);
     $getTourPT = $this->CustomerModel->getTourPT($page, $limit);
-    return $this->view('frontend.customer.index', ['getAllTour' => $getAllTour, 'soTrang' => $soTrang]);
+    return $this->view('frontend.customer.index', ['getAllTour' => $getTourPT, 'soTrang' => $soTrang]);
   }
 
   public function getAllTour()
@@ -54,7 +54,7 @@ class CusTomerController extends BaseController
     if (isset($_POST['page'])) {
       $page = $_POST['page'];
     } else {
-      $page = 1;
+      $page = 0;
     }
     $slTour = $this->CustomerModel->countTour();
     $slTours = $slTour['slSP'];
@@ -97,5 +97,15 @@ class CusTomerController extends BaseController
     $diaChiKH = $_POST['diaChiKH'];
 
     $this -> CustomerModel -> updateTTKH($idKH, $hoTenKH, $soDTKH, $emailKH, $ngaySinhKH, $urlAvatar, $diaChiKH);
+  }
+
+  public function search(){
+    $valSearch = $_POST['valSearch'];
+    $cr_page = 1; 
+    $limit = 3;
+
+    $start = $limit * ($cr_page - 1);
+    $dtTour = $this -> CustomerModel -> searchTour($valSearch, $start, $limit);
+    return $this -> view('customer.view.index', ['getAllTour' => $dtTour]);
   }
 }

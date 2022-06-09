@@ -56,4 +56,24 @@ $(document).ready(function () {
     contactMessage = $('.contactMessage').html();
     console.log(contactMessage);
   })
+
+
+  $('.btnSearch').on('click', function(){
+      var valSearch = $('.searchName').val();
+
+      $.ajax({
+          url: "?controller=customer&action=search",
+          method: "POST",
+          data: {
+            valSearch: valSearch
+          },
+          success: function(dt){
+            // $(".showTour").html(dt);
+              console.log('OKE');
+          },
+          error: function(){
+            console.log('Fail');
+          }
+      })
+  })
 });
