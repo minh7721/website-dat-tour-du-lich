@@ -415,12 +415,12 @@ include("headfoot/header.php");
 
         <form action="">
             <div class="inputBox">
-                <input class="contact contactName" type="text" placeholder="Họ tên">
-                <input class="contact contactEmail" type="email" placeholder="Email">
+                <input class="contact contactName" type="text" placeholder="Họ tên" value="">
+                <input class="contact contactEmail" type="email" placeholder="Email" value="">
             </div>
             <div class="inputBox">
-                <input class="contact contactPhone" type="number" placeholder="Số điện thoại">
-                <input class="contact contactContent" type="text" placeholder="Chủ đề">
+                <input class="contact contactPhone" type="number" placeholder="Số điện thoại" value="">
+                <input class="contact contactContent" type="text" placeholder="Chủ đề" value="">
             </div>
             <textarea class="contactMessage" placeholder="Tin nhắn" name="" id="" cols="30" rows="10"></textarea>
             <button class="btn contact contactBtnSubmit">Gửi</button>

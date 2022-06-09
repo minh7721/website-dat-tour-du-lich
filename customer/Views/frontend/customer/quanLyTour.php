@@ -31,7 +31,7 @@ include('headfoot/header.php');
                     <td><?= $tourDaDats['ngayKetThuc'] ?></td>
                     <td><?= $tourDaDats['soLuongNguoi'] ?></td>
                     <td class="priceX"><?= $tourDaDats['tongTien'] ?></td>
-                    <td><a href="?controller=quanLyTour&action=chiTietTour&idKH=<?= $_SESSION['idKH']?>&idTour=<?= $tourDaDats['idTour'] ?>">Chi tiết</a></td>
+                    <td><a href="?controller=quanLyTour&action=chiTietTour&idKH=<?= $_SESSION['idKH']?>&idHD=<?= $tourDaDats['idHoaDon'] ?>">Chi tiết</a></td>
                 </tr>
             <?php
             }

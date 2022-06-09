@@ -27,10 +27,10 @@ $(document).ready(function () {
   // phanTrang(1);
   function phanTrang(page) {
     $.ajax({
-      url: "http://localhost/website_book_tour/customer/?controller=customer&action=getTourPT",
+      url: "?controller=customer&action=getTourPT",
       method: "POST",
       data: {
-        page: page
+        page: page,
       },
       success: function (dt) {
         $(".showTour").html(dt);
@@ -43,37 +43,47 @@ $(document).ready(function () {
     phanTrang(page);
   });
 
+  $(".btnSearch").on("click", function () {
+    var valSearch = $(".searchName").val();
 
-  $('.contactBtnSubmit').on('click', function(){
-    contactName = $('.contactName').html();
-    console.log(contactName);
-    contactEmail = $('.contactEmail').html();
-    console.log(contactEmail);
-    contactPhone = $('.contactPhone').html();
-    console.log(contactPhone);
-    contactContent = $('.contactContent').html();
-    console.log(contactContent);
-    contactMessage = $('.contactMessage').html();
-    console.log(contactMessage);
-  })
+    $.ajax({
+      url: "?controller=customer&action=search",
+      method: "POST",
+      data: {
+        valSearch: valSearch,
+      },
+      success: function (dt) {
+        // $(".showTour").html(dt);
+        // dauChamSo();
+        console.log(dt);
+      },
+    });
 
+    return false;
+  });
 
-  $('.btnSearch').on('click', function(){
-      var valSearch = $('.searchName').val();
+  $(".contactBtnSubmit").on("click", function () {
+    contactName = $(".contactName").val();
+    contactEmail = $(".contactEmail").val();
+    contactPhone = $(".contactPhone").val();
+    contactContent = $(".contactContent").val();
+    contactMessage = $(".contactMessage").val();
 
-      $.ajax({
-          url: "?controller=customer&action=search",
-          method: "POST",
-          data: {
-            valSearch: valSearch
-          },
-          success: function(dt){
-            // $(".showTour").html(dt);
-              console.log('OKE');
-          },
-          error: function(){
-            console.log('Fail');
-          }
-      })
-  })
+    $.ajax({
+      url: "?controller=customer&action=contact",
+      method: "POST",
+      data: {
+        contactName: contactName,
+        contactEmail: contactEmail,
+        contactPhone: contactPhone,
+        contactContent: contactContent,
+        contactMessage: contactMessage,
+      },
+      success: function(){{
+        alert('Gửi thông tin thành công');
+      }}
+    });
+
+    return false;
+  });
 });

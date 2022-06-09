@@ -13,9 +13,8 @@
         }
 
         public function chiTietTour(){{
-            $idKH = $_GET['idKH'];
-            $idTour = $_GET['idTour'];
-            $chiTietTour = $this -> QuanLyTourModel -> getChiTietTourKH($idKH, $idTour);
+            $idHoaDon = $_GET['idHD'];
+            $chiTietTour = $this -> QuanLyTourModel -> getChiTietTourKH($idHoaDon);
             return $this -> view('frontend.customer.chiTietTourDaDat', ['chiTietTour' => $chiTietTour]);
           
         }}
@@ -23,7 +22,8 @@
         public function huyTour(){
             // $idKH = $_GET['idKH'];
             // $idTour = $_GET['idTour'];
-            $idHoaDon = $_POST['idHoaDon'];
+            // $idHoaDon = $_GET['idHD'];
+            $idHoaDon = $_POST['idHD'];
             $this -> QuanLyTourModel -> huyTourKH($idHoaDon);
         }
 

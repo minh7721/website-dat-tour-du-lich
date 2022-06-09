@@ -75,18 +75,19 @@ class CusTomerController extends BaseController
     return $this->view('frontend.customer.profile', ['thongTinKH' => $thongTinKH]);
   }
 
-  public function uploadimg(){
+  public function uploadimg()
+  {
     $Avatar = basename($_FILES['file']['name']);
-    $fileAvatar = "public/images/avatarKH/".$Avatar;
+    $fileAvatar = "public/images/avatarKH/" . $Avatar;
     // $validates = array('.jpg', '.png', '.jpeg');
     move_uploaded_file($_FILES["file"]["tmp_name"], $fileAvatar);
   }
 
-  public function updateTTKH(){
-    if(isset($_POST['urlAvatar'])){
+  public function updateTTKH()
+  {
+    if (isset($_POST['urlAvatar'])) {
       $urlAvatar = $_POST['urlAvatar'];
-    }
-    else{
+    } else {
       $urlAvatar = "";
     }
     $idKH = $_POST['idKH'];
@@ -96,16 +97,20 @@ class CusTomerController extends BaseController
     $ngaySinhKH = $_POST['ngaySinhKH'];
     $diaChiKH = $_POST['diaChiKH'];
 
-    $this -> CustomerModel -> updateTTKH($idKH, $hoTenKH, $soDTKH, $emailKH, $ngaySinhKH, $urlAvatar, $diaChiKH);
+    $this->CustomerModel->updateTTKH($idKH, $hoTenKH, $soDTKH, $emailKH, $ngaySinhKH, $urlAvatar, $diaChiKH);
   }
 
-  public function search(){
+  public function search()
+  {
     $valSearch = $_POST['valSearch'];
-    $cr_page = 1; 
+    // $valSearch = 'hawaa';
+    $cr_page = 1;
     $limit = 3;
-
+    $slTour = $this->CustomerModel->countTourSearch($valSearch);
+    $slTours = $slTour['slSP'];
+    $soTrang = ceil($slTours / $limit);
     $start = $limit * ($cr_page - 1);
-    $dtTour = $this -> CustomerModel -> searchTour($valSearch, $start, $limit);
-    return $this -> view('customer.view.index', ['getAllTour' => $dtTour]);
+    $dtTour = $this->CustomerModel->searchTour($valSearch, $start, $limit);
+    return $this->view('frontend.customer.index', ['getAllTour' => $dtTour, 'soTrang' => $soTrang]);
   }
 }

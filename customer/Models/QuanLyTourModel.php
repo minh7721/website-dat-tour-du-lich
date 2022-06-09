@@ -10,11 +10,11 @@
                 return $ar;
             }
 
-            public function getChiTietTourKH($idKH, $idTour){
+            public function getChiTietTourKH($idHD){
                 $sql = "SELECT * FROM hoadon, khachhang, tour, khachsan, phuongtien, diadiem 
                         where khachsan.idKS = tour.idKhachSan and phuongtien.idPT = tour.idPhuongTien 
                         and diadiem.idDiaDiem = tour.idDiaDiem and hoadon.idTour = tour.idTour 
-                        and hoadon.idKhachHang = khachhang.idKH and idKhachHang = $idKH and hoadon.idTour = $idTour";
+                        and hoadon.idKhachHang = khachhang.idKH and idHoaDon = $idHD";
                 $query = $this -> query($sql);
                 $row = $query->fetch();
                 return $row;

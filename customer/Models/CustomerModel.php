@@ -74,4 +74,12 @@ class CustomerModel extends BaseModel
         }
         return $ar;
     }
+
+    public function countTourSearch($valSearch)
+    {
+        $sql = "SELECT count(idTour) as slSP from tour, diadiem  where tenDiaDiem like '%$valSearch%' and tour.idDiaDiem = diadiem.idDiaDiem";
+        $query = $this->query($sql);
+        $row = $query->fetch();
+        return $row;
+    }
 }
