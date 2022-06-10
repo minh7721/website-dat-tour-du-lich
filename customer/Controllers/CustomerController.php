@@ -1,4 +1,15 @@
 <?php
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require '../sendEmail/Exception.php';
+require '../sendEmail/PHPMailer.php';
+require '../sendEmail/SMTP.php';
+
+
+
 class CusTomerController extends BaseController
 {
   public function __construct()
@@ -112,5 +123,61 @@ class CusTomerController extends BaseController
     $start = $limit * ($cr_page - 1);
     $dtTour = $this->CustomerModel->searchTour($valSearch, $start, $limit);
     return $this->view('frontend.customer.index', ['getAllTour' => $dtTour, 'soTrang' => $soTrang]);
+  }
+
+  public function contact()
+  {
+    $contactName = $_POST['contactName'];
+    $contactEmail = $_POST['contactEmail'];
+    $contactPhone = $_POST['contactPhone'];
+    $contactContent = $_POST['contactContent'];
+    $contactMessage = $_POST['contactMessage'];
+    $emailAdmin = "nhatminh7721@gmail.com";
+
+    $this -> CustomerModel -> contactAdd($contactName,$contactEmail,$contactPhone,$contactContent,$contactMessage);
+
+
+    $mail = new PHPMailer(true);
+    try {
+        //Server settings
+        $mail->SMTPDebug = SMTP::DEBUG_SERVER; // Enable verbose debug output
+        $mail->isSMTP(); // gửi mail SMTP
+        $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
+        $mail->SMTPAuth = true; // Enable SMTP authentication
+        $mail->Username = 'aplungduoc1@gmail.com'; // SMTP username
+        $mail->Password = 'wtbfjnirdekoxqby'; // SMTP password
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
+        $mail->Port = 587; // TCP port to connect to
+        $mail->CharSet = 'UTF-8';
+        //Recipients
+        $mail->setFrom('aplungduoc1@gmail.com', 'MinhHN');
+
+        $mail->addReplyTo('aplungduoc1@gmail.com', 'MinhHN');
+
+        $mail->addAddress($emailAdmin); // Add a recipient
+        // Content
+        $mail->isHTML(true);   // Set email format to HTML
+        $tieude = '[Pancake Store] Contact khách hàng';
+        $mail->Subject = $tieude;
+
+        //  Mail body content 
+        $bodyContent = '<h2><p>Khách hàng: '.$contactName.'<p></h2>';
+        // $bodyContent .= '<p>Nhấn vào đây để kích hoạt <a href="http://localhost/cnwebb/dhtl_danhba/xacnhanEmail.php?email=&code=">Xác nhận</a></p>';
+        $bodyContent .= '<p>Email: '.$contactEmail.'</p>';
+        $bodyContent .= '<p>Số điện thoại: '.$contactPhone.'</p>';
+        $bodyContent .= '<p>Tiêu đề: '.$contactContent.'</p>';
+        $bodyContent .= '<p>Nội dung: '.$contactMessage.'</p>';
+        // $bodyContent .= '<p><b>Chào !Thân ái!</b></p>';
+
+        $mail->Body = $bodyContent;
+        // $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+        if ($mail->send()) {
+            echo 'Thư đã được gửi đi';
+        } else {
+            echo 'Lỗi. Thư chưa gửi được';
+        }
+    } catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+    }
   }
 }

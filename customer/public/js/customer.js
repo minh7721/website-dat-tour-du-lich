@@ -42,7 +42,7 @@ $(document).ready(function () {
     page = $(this).attr("page");
     phanTrang(page);
   });
-
+  
   $(".btnSearch").on("click", function () {
     var valSearch = $(".searchName").val();
 
@@ -79,8 +79,9 @@ $(document).ready(function () {
         contactContent: contactContent,
         contactMessage: contactMessage,
       },
-      success: function(){{
-        alert('Gửi thông tin thành công');
+      success: function(dt){{
+        // alert('Gửi thông tin thành công');
+        console.log(dt);
       }}
     });
 

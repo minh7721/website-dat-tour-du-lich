@@ -82,4 +82,12 @@ class CustomerModel extends BaseModel
         $row = $query->fetch();
         return $row;
     }
+
+    public function contactAdd($contactName, $contactEmail, $contactPhone, $contactContent, $contactMessage)
+    {
+        $sql = "INSERT INTO contact(HoTen, Email, SoDT, ChuDe, TinNhan)
+                values ('$contactName','$contactEmail','$contactPhone','$contactContent','$contactMessage')";
+        $this->query($sql);
+        // echo $sql;
+    }
 }
