@@ -22,9 +22,9 @@ $anhPT = $row["anhPT"];
     }
 }
 ?>
-<main class="container-sm my-4">
+<main class="container-sm my-4" enctype="multipart/form-data">
     <?php
-    echo '<form action="process-suaPT.php?idPT='.$idPT.'" method="post">'
+    echo '<form action="process-suaPT.php?idPT='.$idPT.'" method="post" >'
     ?>
        
         <div class="form-group row">

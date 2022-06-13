@@ -27,8 +27,8 @@ VALUES ('$idDiaDiem','$tenDiaDiem','$quocGia','$moTaDiaDiem','$fileanhDiaDiem','
 echo $sql;
 $result = mysqli_query($connect,$sql);
 move_uploaded_file($_FILES["anhDiaDiem"]["tmp_name"], $fileanhDiaDiem);
-move_uploaded_file($_FILES["anhDiaDiem2"]["tmp_name"], $fileanhDiaDiem);
-move_uploaded_file($_FILES["anhDiaDiem3"]["tmp_name"], $fileanhDiaDiem);
+move_uploaded_file($_FILES["anhDiaDiem2"]["tmp_name"], $fileanhDiaDiem2);
+move_uploaded_file($_FILES["anhDiaDiem3"]["tmp_name"], $fileanhDiaDiem3);
 //move_uploaded_file($anhDiaDiem_tmp,'img/'.$anhDiaDiem);
 if($result > 0){
     header("Location: diadiem.php");

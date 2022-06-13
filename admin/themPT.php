@@ -7,7 +7,7 @@ include("./header.php");
 ?>
 <main class="container">
         <h2>Thêm phương tiện</h2>
-      <form action="process-themPT.php" method="post">
+      <form action="process-themPT.php" method="post" enctype="multipart/form-data">
         
            
             <div class="form-group row">
@@ -33,7 +33,7 @@ include("./header.php");
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Ảnh phương tiện</label>
                 <div class="col-sm-10">
-                <input type="txt" class="form-control" id="anhPT" name="anhPT">
+                <input type="file" class="form-control" id="anhPT" name="anhPT">
                 </div>
             </div>
            
