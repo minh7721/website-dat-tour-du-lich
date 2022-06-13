@@ -105,7 +105,7 @@ if (isset($_POST['btnLogin'])) {
 									</label>
 								</div>
 								<div class="w-50 text-md-right">
-									<a href="#" style="color: #fff">Quên mật khẩu</a>
+									<a href="./quenPass.php" style="color: #fff">Quên mật khẩu</a>
 								</div>
 							</div>
 						</form>
