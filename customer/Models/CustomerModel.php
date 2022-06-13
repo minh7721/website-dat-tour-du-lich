@@ -73,5 +73,22 @@ class CustomerModel extends BaseModel
             array_push($ar, $row);
         }
         return $ar;
+        // echo $sql;
+    }
+
+    public function countTourSearch($valSearch)
+    {
+        $sql = "SELECT count(idTour) as slSP from tour, diadiem  where tenDiaDiem like '%$valSearch%' and tour.idDiaDiem = diadiem.idDiaDiem";
+        $query = $this->query($sql);
+        $row = $query->fetch();
+        return $row;
+    }
+
+    public function contactAdd($contactName, $contactEmail, $contactPhone, $contactContent, $contactMessage)
+    {
+        $sql = "INSERT INTO contact(HoTen, Email, SoDT, ChuDe, TinNhan)
+                values ('$contactName','$contactEmail','$contactPhone','$contactContent','$contactMessage')";
+        $this->query($sql);
+        // echo $sql;
     }
 }

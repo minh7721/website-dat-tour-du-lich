@@ -66,7 +66,7 @@
                             <div class="d-flex w-50"> <input type="text" class="form-control px-0" placeholder="MM/YY"> <input type="password" maxlength=3 class="form-control px-0" placeholder="CVV"> </div>
                         </div>
                         <div class="my-3 cardname">
-                            <p class="dis fw-bold mb-2">Tên chủ thẻ</p> <input class="form-control" type="text">
+                            <p class="dis fw-bold mb-2">Tên chủ thẻ</p> <input required class="form-control" type="text">
                         </div>
                         <div class="address">
                             <div class=" my-3">
@@ -95,7 +95,7 @@
                                     <p class="fw-bold">Total</p>
                                     <p money="<?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?>" lastMoney="<?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?>" class="fw-bold priceX giaCuoiCung"><?= $chiTietTour[0]['giaSauGiam'] + $chiTietTour[0]['giaSauGiam'] * 20 / 100 ?></p>
                                 </div>
-                                <div idTour="<?= $chiTietTour[0]['idTour'] ?>" class="btn btn-primary mt-2 btnThanhToan">Thanh toán</div>
+                                <button idTour="<?= $chiTietTour[0]['idTour'] ?>" class="btn btn-primary mt-2 btnThanhToan">Thanh toán</button>
                             </div>
                         </div>
                     </div>
@@ -224,9 +224,8 @@
                         thisDay: thisDay,
                     },
                     success: function(dt) {
+                        alert('Đặt tour thành công');
                         $(location).prop('href', '?controller=customer&action=index');
-
-                        
                     }
                 })
             })

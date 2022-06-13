@@ -85,9 +85,9 @@ session_start();
                 <li>
                     <?php
                     if (isset($_SESSION['loginOK'])) {
-                        echo '<a class="fs-3 text-dark dropdown-item" href="http://localhost/website_book_tour/logout.php">Đăng xuất</a>';
+                        echo '<a class="fs-3 text-dark dropdown-item" href="../logout.php">Đăng xuất</a>';
                     } else {
-                        echo '<a class="fs-3 text-dark dropdown-item" href="http://localhost/website_book_tour/login.php">Đăng nhập</a>';
+                        echo '<a class="fs-3 text-dark dropdown-item" href="../login.php">Đăng nhập</a>';
                     }
                     ?>
                 </li>

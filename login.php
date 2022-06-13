@@ -28,11 +28,10 @@ if (isset($_POST['btnLogin'])) {
 			// $_SESSION['loginSuccess'] = "<h1 class='text-success text-center'>Xin chào " . $rowTTKH['8'] . "</h1>";
 			if($row['status'] == 1){
 				$_SESSION['idKH'] = $rowTTKH['idKH'];
-				header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
+				header("location:customer/?controller=customer&action=index");
 			}
 			if($row['status'] == 0){
-				$_SESSION['quyen'] = $row['status'];
-				header("location:http://localhost/website_book_tour/admin/index.php");
+				header("location:admin/index.php");
 			}
 		} else {
 			$_SESSION['titleFalse'] = "<h2 class='text-warning text-center'>Tài khoản hoặc mật khẩu không chính xác</h2>";
@@ -85,7 +84,7 @@ if (isset($_POST['btnLogin'])) {
 							<div class="form-group">
 								<input value="<?php if (isset($_COOKIE['rememberEmail'])) {
 				echo $_COOKIE['rememberEmail'];
-			} ?>" name="email" type="text" class="form-control" placeholder="Email" required>
+			} ?>" name="email" type="email" class="form-control" placeholder="Email" required>
 							</div>
 							<div class="form-group">
 								<input value="<?php if (isset($_COOKIE['rememberPass'])) {

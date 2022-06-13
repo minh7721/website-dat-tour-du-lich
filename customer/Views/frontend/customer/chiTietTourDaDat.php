@@ -168,12 +168,12 @@
             $('.btnHuyTour').on('click', function() {
                 const idTour = $(this).attr('idTour');
                 const idKH = $(this).attr('idKH');
-                const idHoaDon = $(this).attr('idHoaDon');
+                const idHD = $(this).attr('idHoaDon');
                 $.ajax({
                     url: "?controller=quanLyTour&action=huyTour",
                     method: "POST",
                     data: {
-                        idHoaDon: idHoaDon
+                        idHD: idHD
                     },
                     success: function(dt) {
                         $(location).prop('href', '?controller=quanLyTour&action=index&idKH=' + idKH + '&idTour=' + idTour);
