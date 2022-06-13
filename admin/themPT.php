@@ -5,30 +5,25 @@ include("./header.php");
         <h2>Thêm phương tiện</h2>
       <form action="process-themPT.php" method="post">
         
-            <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID phương tiện</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="idPT" name="idPT">
-                </div>
-            </div>
+           
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Loại phương tiện</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="loaiPhuongTien" name="loaiPhuongTien">
+                <input type="text" class="form-control" id="loaiPhuongTien" name="loaiPhuongTien" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Tên Phương Tiện</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="tenPhuongTien" name="tenPhuongTien">
+                <input type="text" class="form-control" id="tenPhuongTien" name="tenPhuongTien" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Mô tả</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="moTaPT" name="moTaPT">
+                <input type="text" class="form-control" id="moTaPT" name="moTaPT" required>
                 </div>
             </div>
             <div class="form-group row">

@@ -31,6 +31,7 @@ if (isset($_POST['btnLogin'])) {
 				header("location:http://localhost/website_book_tour/customer/?controller=customer&action=index");
 			}
 			if($row['status'] == 0){
+				$_SESSION['quyen'] = $row['status'];
 				header("location:http://localhost/website_book_tour/admin/index.php");
 			}
 		} else {

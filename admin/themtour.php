@@ -1,22 +1,24 @@
 <?php
 include("./header.php");
+include("./config/db.php");
+
 ?>
 
 <main class="container">
+
+
         <h2>Thêm thông tin Tour du lịch</h2>
+        
       <form action="process-themtour.php" method="post">
         
-            <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID Tour</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="idTour" name="idTour">
-                </div>
-            </div>
+           
 
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Tên Tour</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="tenTour" name="tenTour">
+                    
+                <input type="text" class="form-control" id="tenTour" name="tenTour" required>
+                
                 </div>
             </div>
 
@@ -24,7 +26,7 @@ include("./header.php");
                 <label for="empPosition" class="col-sm-2 col-form-label">Ngày bắt đầu</label>
                 <div class="col-sm-10">
 
-                <input type="date" class="form-control" id="ngayBatDau" name="ngayBatDau" method="get">
+                <input type="date" class="form-control" id="ngayBatDau" name="ngayBatDau" method="get" required>
                 
                 </div>
             </div>
@@ -33,32 +35,32 @@ include("./header.php");
                 <div class="col-sm-10">
             
                     
-                  <input type="date" class="form-control" id="ngayKetThuc" name="ngayKetThuc" min="'ngayBatDau'">
+                  <input type="date" class="form-control" id="ngayKetThuc" name="ngayKetThuc"    required >
                 
                 </div>
             </div>
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Giá ban đầu</label>
                 <div class="col-sm-10">
-                <input type="int" class="form-control" id="giaBanDau" name="giaBanDau">
+                <input type="number" class="form-control" id="giaBanDau" name="giaBanDau" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Giá sau giảm</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="giaSauGiam" name="giaSauGiam">
+                <input type="number" class="form-control" id="giaSauGiam" name="giaSauGiam" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">Đã sử dụng hết</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Có thể triển khai</label>
                 <div class="col-sm-10">
-                <input type="number" class="form-control" id="daSuDungHet" name="daSuDungHet" min="0" max="1">
+                <input type="number" class="form-control" id="daSuDungHet" name="daSuDungHet" min="0" max="1" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Địa điểm</label>
                 <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example" name="idDiaDiem" id="idDiaDiem">
+                <select class="form-select" aria-label="Default select example" name="idDiaDiem" id="idDiaDiem" required>
                         <?php
                         include("./config/db.php");
                         $sql = "SELECT * FROM diadiem";
@@ -79,7 +81,7 @@ include("./header.php");
              <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Khách sạn</label>
                 <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example" name="idKhachSan" id="idKhachSan">
+                <select class="form-select" aria-label="Default select example" name="idKhachSan" id="idKhachSan" required>
                         <?php
                         include("./config/db.php");
                         $sql = "SELECT * FROM khachsan";
@@ -97,7 +99,7 @@ include("./header.php");
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Phương tiện</label>
                 <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example" name="idPhuongTien" id="idPhuongTien">
+                <select class="form-select" aria-label="Default select example" name="idPhuongTien" id="idPhuongTien" required>
                         <?php
                         include("./config/db.php");
                         $sql = "SELECT * FROM phuongtien";
@@ -115,7 +117,7 @@ include("./header.php");
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Lịch trình</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="lichTrinh" name="lichTrinh">
+                <input type="text" class="form-control" id="lichTrinh" name="lichTrinh" required>
                 </div>
             </div>
                     <button type="submit" class="btn btn-success">Thêm Tour</button>
@@ -124,7 +126,9 @@ include("./header.php");
         </div>
         
     </form>
+    </form>
 </main>
+
 <?php
 include("./footer.php")
 ?>

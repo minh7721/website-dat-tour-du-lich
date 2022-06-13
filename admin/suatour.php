@@ -80,7 +80,7 @@ $lichTrinh = $row["lichTrinh"];
                 <label for="empPosition" class="col-sm-2 col-form-label">Giá sau giảm</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="number" class="form-control" id="giaSauGiam" name="giaSauGiam" value = "'.$giaSauGiam.'" >'
+                    echo '<input type="number" class="form-control" id="giaSauGiam" name="giaSauGiam" value = "'.$giaSauGiam.'"  >'
                 ?>
                 </div>
             </div>
