@@ -12,6 +12,7 @@ $idPhuongTien = $_POST["idPhuongTien"];
 $lichTrinh = $_POST["lichTrinh"];
 
 include("./config/db.php");
+
 $sql = "INSERT INTO `tour`(`idTour`, `tenTour`, `ngayBatDau`,`ngayKetThuc`,`giaBanDau`,`giaSauGiam`, `daSuDungHet`,
 `idDiaDiem`,`idKhachSan`, `idPhuongTien`, `lichTrinh`) 
 VALUES ('$idTour','$tenTour','$ngayBatDau','$ngayKetThuc','$giaBanDau','$giaSauGiam',

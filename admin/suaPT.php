@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 $idPT = $_GET['idPT'];
 include("header.php");
 include("./config/db.php");

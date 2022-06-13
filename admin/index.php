@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 include("header.php")
 ?>
 <form action="Tour.php" method="get" class="container-md my-3">
@@ -27,7 +30,7 @@ include("header.php")
                 <th scope="col">Ngày kết thúc</th>
                 <th scope="col">Giá ban đầu</th>
                 <th scope="col">Giá sau giảm</th>
-                <th scope="col">Đã sử dụng hết</th>
+                <th scope="col">Có thể triển khai</th>
                
                
                     <th scope="col">Sửa</th>

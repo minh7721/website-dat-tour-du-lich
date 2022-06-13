@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 include("header.php")
 ?>
 <form action="diadiem.php" method="get" class="container-md my-3">
@@ -53,7 +57,7 @@ include("header.php")
                         echo '<th scope="row">' . $row['idDiaDiem'] . '</th>';
                         echo '<td>' . $row['tenDiaDiem'] . '</td>';
                         echo '<td>' . $row['quocGia'] . '</td>';
-                        echo '<td>' . '<img style="width: 100px" src="'.$row['anhDiaDiem'].'"><img/>' . '</td>';
+                        echo '<td>' . '<img style="width: 100px" src="../customer/'.$row['anhDiaDiem'].'"><img/>' . '</td>';
                         echo '<td><a href="suadiadiem.php?idDiaDiem=' . $row['idDiaDiem'] . '"><i class="fas fa-edit"></i></a></td>';
                         echo '<td><a href="xoadiadiem.php?idDiaDiem=' . $row['idDiaDiem'] . '"><i class="fas fa-trash-alt"></i></a></td>';
                         echo '<td><a href="diadiemchitiet.php?idDiaDiem=' . $row['idDiaDiem'] . '">Chi tiết</a></td>';

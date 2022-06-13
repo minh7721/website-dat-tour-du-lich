@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 $idHoaDon = $_GET['idHoaDon'];
 include("header.php");
 include("./config/db.php");

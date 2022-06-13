@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 $idTour = $_GET['idTour'];
 include("header.php");
 include("./config/db.php");
@@ -85,7 +89,7 @@ $lichTrinh = $row["lichTrinh"];
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">Đã sử dụng hết</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Có thể triển khai</label>
                 <div class="col-sm-10">
                 <?php
                     echo '<input type="number" class="form-control" id="daSuDungHet" name="daSuDungHet" value = "'.$daSuDungHet.'" min="0" max="1">'
