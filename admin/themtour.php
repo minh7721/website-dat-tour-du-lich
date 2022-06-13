@@ -1,58 +1,70 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 include("./header.php");
+include("./config/db.php");
+
 ?>
+
 <main class="container">
+
+
         <h2>Thêm thông tin Tour du lịch</h2>
+        
       <form action="process-themtour.php" method="post">
         
-            <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID Tour</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="idTour" name="idTour">
-                </div>
-            </div>
+           
 
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Tên Tour</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="tenTour" name="tenTour">
+                    
+                <input type="text" class="form-control" id="tenTour" name="tenTour" required>
+                
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Ngày bắt đầu</label>
                 <div class="col-sm-10">
-                <input type="date" class="form-control" id="ngayBatDau" name="ngayBatDau">
+
+                <input type="date" class="form-control" id="ngayBatDau" name="ngayBatDau" method="get" required>
+                
                 </div>
             </div>
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Ngày kết thúc</label>
                 <div class="col-sm-10">
-                <input type="date" class="form-control" id="ngayKetThuc" name="ngayKetThuc">
+            
+                    
+                  <input type="date" class="form-control" id="ngayKetThuc" name="ngayKetThuc"    required >
+                
                 </div>
             </div>
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Giá ban đầu</label>
                 <div class="col-sm-10">
-                <input type="int" class="form-control" id="giaBanDau" name="giaBanDau">
+                <input type="number" class="form-control" id="giaBanDau" name="giaBanDau" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Giá sau giảm</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="giaSauGiam" name="giaSauGiam">
+                <input type="number" class="form-control" id="giaSauGiam" name="giaSauGiam" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">Đã sử dụng hết</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Có thể triển khai</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="daSuDungHet" name="daSuDungHet">
+                <input type="number" class="form-control" id="daSuDungHet" name="daSuDungHet" min="0" max="1" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID địa điểm</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Địa điểm</label>
                 <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example" name="idDiaDiem" id="idDiaDiem">
+                <select class="form-select" aria-label="Default select example" name="idDiaDiem" id="idDiaDiem" required>
                         <?php
                         include("./config/db.php");
                         $sql = "SELECT * FROM diadiem";
@@ -60,7 +72,7 @@ include("./header.php");
                         $count = mysqli_num_rows($result);
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<option value=' . $row["idDiaDiem"] . '>' . $row["idDiaDiem"] . '</option>';
+                                echo '<option value=' . $row["idDiaDiem"] . '>' . $row["tenDiaDiem"] . '</option>';
                             }
                         }
                         ?>
@@ -71,9 +83,9 @@ include("./header.php");
 
             </div>
              <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID khách sạn</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Khách sạn</label>
                 <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example" name="idKhachSan" id="idKhachSan">
+                <select class="form-select" aria-label="Default select example" name="idKhachSan" id="idKhachSan" required>
                         <?php
                         include("./config/db.php");
                         $sql = "SELECT * FROM khachsan";
@@ -81,7 +93,7 @@ include("./header.php");
                         $count = mysqli_num_rows($result);
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<option value=' . $row["idKS"] . '>' . $row["idKS"] . '</option>';
+                                echo '<option value=' . $row["idKS"] . '>' . $row["tenKS"] . '</option>';
                             }
                         }
                         ?>
@@ -89,9 +101,9 @@ include("./header.php");
                 </div>
             </div>
             <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID phương tiện</label>
+                <label for="empPosition" class="col-sm-2 col-form-label">Phương tiện</label>
                 <div class="col-sm-10">
-                <select class="form-select" aria-label="Default select example" name="idPhuongTien" id="idPhuongTien">
+                <select class="form-select" aria-label="Default select example" name="idPhuongTien" id="idPhuongTien" required>
                         <?php
                         include("./config/db.php");
                         $sql = "SELECT * FROM phuongtien";
@@ -99,7 +111,7 @@ include("./header.php");
                         $count = mysqli_num_rows($result);
                         if ($count > 0) {
                             while ($row = mysqli_fetch_assoc($result)) {
-                                echo '<option value=' . $row["idPT"] . '>' . $row["idPT"] . '</option>';
+                                echo '<option value=' . $row["idPT"] . '>' . $row["tenPhuongTien"] . '</option>';
                             }
                         }
                         ?>
@@ -109,7 +121,7 @@ include("./header.php");
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Lịch trình</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="lichTrinh" name="lichTrinh">
+                <input type="text" class="form-control" id="lichTrinh" name="lichTrinh" required>
                 </div>
             </div>
                     <button type="submit" class="btn btn-success">Thêm Tour</button>
@@ -118,7 +130,9 @@ include("./header.php");
         </div>
         
     </form>
+    </form>
 </main>
+
 <?php
 include("./footer.php")
 ?>

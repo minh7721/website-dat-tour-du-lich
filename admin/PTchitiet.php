@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 if (isset($_GET["idPT"]))
 $idPT = $_GET["idPT"];
 else
@@ -38,7 +42,7 @@ include("header.php")
                         echo '<td>' . $row['loaiPhuongTien'] . '</td>';
                         echo '<td>' . $row['tenPhuongTien'] . '</td>';
                         echo '<td>' . $row['moTaPT'] . '</td>';
-                        echo '<td>' . '<img style="width: 100px" src="'.$row['anhPT'].'"><img/>' . '</td>';
+                        echo '<td>' . '<img style="width: 100px" src="../customer/'.$row['anhPT'].'"><img/>' . '</td>';
 
                         echo '<td><a href="suaPT.php?idPT=' . $row['idPT'] . '"><i class="fas fa-edit"></i></a></td>';
                         echo '<td><a href="xoaPT.php?idPT=' . $row['idPT'] . '"><i class="fas fa-trash-alt"></i></a></td>';

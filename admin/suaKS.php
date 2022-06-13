@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 $idKS = $_GET['idKS'];
 include("header.php");
 include("./config/db.php");
@@ -27,7 +31,7 @@ $diaChiKS = $row["diaChiKS"];
                 <label for="empPosition" class="col-sm-2 col-form-label">ID khách sạn</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="int" class="form-control" id="idKS" name="idKS" value = "'.$idKS.'">'
+                    echo '<input type="int" class="form-control" id="idKS" name="idKS" value = "'.$idKS.'" readonly>'
                 ?>
                 </div>
                 </div>

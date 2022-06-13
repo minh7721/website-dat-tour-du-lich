@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 $idPT = $_GET['idPT'];
 include("header.php");
 include("./config/db.php");
@@ -18,16 +22,16 @@ $anhPT = $row["anhPT"];
     }
 }
 ?>
-<main class="container-sm my-4">
+<main class="container-sm my-4" enctype="multipart/form-data">
     <?php
-    echo '<form action="process-suaPT.php?idPT='.$idPT.'" method="post">'
+    echo '<form action="process-suaPT.php?idPT='.$idPT.'" method="post" >'
     ?>
        
         <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">ID phương tiện</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="int" class="form-control" id="idPT" name="idPT" value = "'.$idPT.'">'
+                    echo '<input type="int" class="form-control" id="idPT" name="idPT" value = "'.$idPT.'" readonly>'
                 ?>
                 </div>
                 </div>

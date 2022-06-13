@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 $idDiaDiem = $_GET['idDiaDiem'];
 include("header.php");
 include("./config/db.php");
@@ -27,7 +31,7 @@ $anhDiaDiem3 = $row["anhDiaDiem3"];
                 <label for="empPosition" class="col-sm-2 col-form-label">ID Địa Điểm</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="text" class="form-control" id="idDiaDiem" name="idDiaDiem" value = "'.$idDiaDiem.'">'
+                    echo '<input type="text" class="form-control" id="idDiaDiem" name="idDiaDiem" value = "'.$idDiaDiem.'" readonly>'
                 ?>
                 </div>
                 </div>

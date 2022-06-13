@@ -10,7 +10,7 @@ $sql = "INSERT INTO `khachsan`(`idKS`, `tenKS`, `loaiPhong`,`giaPhong`, `diaChiK
 VALUES ('$idKS','$tenKS','$loaiPhong','$giaPhong','$diaChiKS')";
 echo $sql;
 $result = mysqli_query($connect,$sql);
-
+move_uploaded_file($_FILES["anhPT"]["tmp_name"], $fileanhPT);
 if($result > 0){
     header("Location: KS.php");
 }else{

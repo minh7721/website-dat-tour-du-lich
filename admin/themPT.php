@@ -1,40 +1,39 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 include("./header.php");
 ?>
 <main class="container">
         <h2>Thêm phương tiện</h2>
-      <form action="process-themPT.php" method="post">
+      <form action="process-themPT.php" method="post" enctype="multipart/form-data">
         
-            <div class="form-group row">
-                <label for="empPosition" class="col-sm-2 col-form-label">ID phương tiện</label>
-                <div class="col-sm-10">
-                <input type="text" class="form-control" id="idPT" name="idPT">
-                </div>
-            </div>
+           
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Loại phương tiện</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="loaiPhuongTien" name="loaiPhuongTien">
+                <input type="text" class="form-control" id="loaiPhuongTien" name="loaiPhuongTien" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Tên Phương Tiện</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="tenPhuongTien" name="tenPhuongTien">
+                <input type="text" class="form-control" id="tenPhuongTien" name="tenPhuongTien" required>
                 </div>
             </div>
 
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Mô tả</label>
                 <div class="col-sm-10">
-                <input type="text" class="form-control" id="moTaPT" name="moTaPT">
+                <input type="text" class="form-control" id="moTaPT" name="moTaPT" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="empPosition" class="col-sm-2 col-form-label">Ảnh phương tiện</label>
                 <div class="col-sm-10">
-                <input type="txt" class="form-control" id="anhPT" name="anhPT">
+                <input type="file" class="form-control" id="anhPT" name="anhPT">
                 </div>
             </div>
            

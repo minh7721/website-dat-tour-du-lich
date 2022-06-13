@@ -1,4 +1,8 @@
 <?php
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 $idKH = $_GET['idKH'];
 include("header.php");
 include("./config/db.php");
@@ -27,7 +31,7 @@ $diaChiKH = $row["diaChiKH"];
                 <label for="empPosition" class="col-sm-2 col-form-label">ID khách hàng</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="int" class="form-control" id="idKH" name="idKH" value = "'.$idKH.'">'
+                    echo '<input type="int" class="form-control" id="idKH" name="idKH" value = "'.$idKH.'" readonly>'
                 ?>
                 </div>
                 </div>
@@ -52,7 +56,7 @@ $diaChiKH = $row["diaChiKH"];
                 <label for="empPosition" class="col-sm-2 col-form-label">Số điện thoại</label>
                 <div class="col-sm-10">
                 <?php
-                    echo '<input type="int" class="form-control" id="soDTKH" name="soDTKH" value = "'.$soDTKH.'">'
+                    echo '<input type="tel" class="form-control" id="soDTKH" name="soDTKH" value = "'.$soDTKH.'">'
                 ?>
                 </div>
             </div>

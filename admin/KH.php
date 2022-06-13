@@ -1,5 +1,8 @@
 <?php
-
+session_start();
+if($_SESSION['status'] != 0){
+    header("location: ../login.php");
+}
 include("header.php")
 ?>
 <form action="KH.php" method="get" class="container-md my-3">

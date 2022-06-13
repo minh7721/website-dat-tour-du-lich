@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION["status"] = "";
 include('./database/db.php');
 ?>
 
@@ -31,6 +32,7 @@ if (isset($_POST['btnLogin'])) {
 				header("location:customer/?controller=customer&action=index");
 			}
 			if($row['status'] == 0){
+				$_SESSION['status'] = $row['status'];
 				header("location:admin/index.php");
 			}
 		} else {
