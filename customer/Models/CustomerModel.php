@@ -73,6 +73,7 @@ class CustomerModel extends BaseModel
             array_push($ar, $row);
         }
         return $ar;
+        // echo $sql;
     }
 
     public function countTourSearch($valSearch)

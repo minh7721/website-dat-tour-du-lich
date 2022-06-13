@@ -50,12 +50,12 @@ $(document).ready(function () {
       url: "?controller=customer&action=search",
       method: "POST",
       data: {
-        valSearch: valSearch,
+        valSearch: valSearch
       },
       success: function (dt) {
-        // $(".showTour").html(dt);
-        // dauChamSo();
-        console.log(dt);
+        $(".showTour").html(dt);
+        dauChamSo();
+        // console.log(dt); 
       },
     });
 

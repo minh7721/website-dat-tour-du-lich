@@ -114,7 +114,7 @@ class CusTomerController extends BaseController
   public function search()
   {
     $valSearch = $_POST['valSearch'];
-    // $valSearch = 'hawaa';
+    // $valSearch = 'ha';
     $cr_page = 1;
     $limit = 3;
     $slTour = $this->CustomerModel->countTourSearch($valSearch);
@@ -122,7 +122,11 @@ class CusTomerController extends BaseController
     $soTrang = ceil($slTours / $limit);
     $start = $limit * ($cr_page - 1);
     $dtTour = $this->CustomerModel->searchTour($valSearch, $start, $limit);
-    return $this->view('frontend.customer.index', ['getAllTour' => $dtTour, 'soTrang' => $soTrang]);
+    return $this->view('frontend.customer.thongTinTour', ['getAllTour' => $dtTour, 'soTrang' => $soTrang]);
+    // echo "<pre>";
+    // print_r($dtTour);
+    // echo "</pre>";
+    // echo $valSearch;
   }
 
   public function contact()

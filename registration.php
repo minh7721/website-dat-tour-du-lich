@@ -137,12 +137,12 @@ require './sendEmail/SMTP.php';
                             <div class="form-group">
                                 <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="tel" name="phone" class="form-control" placeholder="Số điện thoại" required>
                             </div>
                             <div class="form-group">
                                 <input type="date" name="birthday" class="form-control" placeholder="Ngày sinh" required>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <input id="password-field" name="pass1" type="password" class="form-control" placeholder="Mật khẩu" required>
                                 <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
