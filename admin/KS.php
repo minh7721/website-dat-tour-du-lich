@@ -54,7 +54,7 @@ include("header.php")
                         echo '<th scope="row">' . $row['idKS'] . '</th>';
                         echo '<td>' . $row['tenKS'] . '</td>';
                         echo '<td>' . $row['loaiPhong'] . '</td>';
-                        echo '<td>' . $row['giaPhong'] . '</td>';
+                        echo '<td class="priceX">' . $row['giaPhong'] . '</td>';
                         echo '<td>' . $row['diaChiKS'] . '</td>';
                         echo '<td><a href="suaKS.php?idKS=' . $row['idKS'] . '"><i class="fas fa-edit"></i></a></td>';
                         echo '<td><a href="xoaKS.php?idKS=' . $row['idKS'] . '"><i class="fas fa-trash-alt"></i></a></td>';

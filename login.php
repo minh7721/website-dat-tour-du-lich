@@ -75,6 +75,10 @@ if (isset($_POST['btnLogin'])) {
 							echo $_SESSION['check-email'];
 							unset($_SESSION['check-email']);
 						}
+							if (isset($_SESSION['changePassOK'])) {
+							echo $_SESSION['changePassOK'];
+							unset($_SESSION['changePassOK']);
+						}
 						?>
 					</div>
 				</div>

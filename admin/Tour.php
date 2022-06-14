@@ -58,8 +58,8 @@ include("header.php")
                         echo '<td>' . $row['tenTour'] . '</td>';
                         echo '<td>' . $row['ngayBatDau'] . '</td>';
                         echo '<td>' . $row['ngayKetThuc'] . '</td>';
-                        echo '<td>' . $row['giaBanDau'] . '</td>';
-                        echo '<td>' . $row['giaSauGiam'] . '</td>';
+                        echo '<td class="priceX">' . $row['giaBanDau'] . '</td>';
+                        echo '<td class="priceX">' . $row['giaSauGiam'] . '</td>';
                         echo '<td>' . $row['daSuDungHet'] . '</td>';
                         
                         
