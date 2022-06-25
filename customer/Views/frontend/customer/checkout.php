@@ -214,7 +214,7 @@
                 const d = new Date();
                 const thisDay = d.getFullYear() + "/" + (d.getMonth() + 1) + "/" + (d.getDate());
                 $.ajax({
-                    url: "http://localhost/website_book_tour/customer/?controller=checkout&action=datTour",
+                    url: "?controller=checkout&action=datTour",
                     method: "POST",
                     data: {
                         idKH: idKH,

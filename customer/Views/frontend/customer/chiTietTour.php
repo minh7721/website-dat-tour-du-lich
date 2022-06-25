@@ -95,11 +95,11 @@ if (isset($_GET['idTour'])) {
                                             if (isset($_SESSION['idKH'])) {
                                                 $idKhach = $_SESSION['idKH'];
                                             ?>
-                                                <a class="btn" href="http://localhost/website_book_tour/customer/?controller=Checkout&action=index&idTour=<?php echo $chiTietTour[0]['idTour']; ?>&idKH=<?php echo $idKhach; ?>">Đặt tour ngay</a>
+                                                <a class="btn" href="?controller=Checkout&action=index&idTour=<?php echo $chiTietTour[0]['idTour']; ?>&idKH=<?php echo $idKhach; ?>">Đặt tour ngay</a>
                                             <?php
                                             } else {
                                             ?>
-                                                <a class="btn" href="http://localhost/website_book_tour/login.php">Đặt tour ngay</a>
+                                                <a class="btn" href="../../../website_book_tour/login.php">Đặt tour ngay</a>
                                             <?php
                                             }
 

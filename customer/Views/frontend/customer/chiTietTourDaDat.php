@@ -61,11 +61,8 @@
                     <div>
                         <p class="dis fw-bold mb-2">Số thẻ ngân hàng</p>
                         <div class="d-flex align-items-center justify-content-between card-atm border rounded">
-                            <div class="fab fa-cc-visa ps-3"></div> <input type="text" class="form-control" placeholder="Card Details">
-                            <div class="d-flex w-50"> <input type="text" class="form-control px-0" placeholder="MM/YY"> <input type="password" maxlength=3 class="form-control px-0" placeholder="CVV"> </div>
-                        </div>
-                        <div class="my-3 cardname">
-                            <p class="dis fw-bold mb-2">Khách sạn</p> <input class="form-control" type="text">
+                            <div class="fab fa-cc-visa ps-3"></div> <input disabled type="text" class="form-control" placeholder="Card Details">
+                            <div class="d-flex w-50"> <input disabled type="text" class="form-control px-0" placeholder="MM/YY"> <input type="password" maxlength=3 class="form-control px-0" placeholder="CVV"> </div>
                         </div>
                         <div class="address">
                             <div class=" my-3">
@@ -73,7 +70,7 @@
                                 <input required class="form-control slNguoi" type="number" value="<?= $chiTietTour['soLuongNguoi'] ?>" disabled min="1" max="999">
                             </div>
                             <div class="my-3">
-                                <p class="dis fw-bold mb-2">Mã giảm giá</p> <input class="form-control text-uppercase" type="text" placeholder="Nhập mã giảm giá" value="" id="discount">
+                                <p class="dis fw-bold mb-2">Mã giảm giá</p> <input disabled class="form-control text-uppercase" type="text" placeholder="Nhập mã giảm giá" value="" id="discount">
                             </div>
                             <div class="d-flex flex-column dis">
                                 <div class="d-flex align-items-center justify-content-between mb-2">

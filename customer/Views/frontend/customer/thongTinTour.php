@@ -7,7 +7,7 @@
             foreach ($getAllTour as $getTour) {
             ?>
                 <div class="box">
-                    <a href="http://localhost/website_book_tour/customer/?controller=ChiTietTour&action=index&idTour=<?php echo $getTour['idTour'] ?>">
+                    <a href="?controller=ChiTietTour&action=index&idTour=<?php echo $getTour['idTour'] ?>">
                         <img src="<?php echo $getTour['anhDiaDiem'] ?>" alt="">
                         <div class="content">
                             <h3> <i class="fas fa-map-marker-alt"></i><?php echo $getTour['tenTour'] ?></h3>
@@ -31,11 +31,11 @@
                             if (isset($_SESSION['idKH'])) {
                                 $idKhach = $_SESSION['idKH'];
                             ?>
-                                <a class="btn btnDatNgay" href="http://localhost/website_book_tour/customer/?controller=Checkout&action=index&idTour=<?php echo $getTour['idTour'] ?>&idKH=<?php echo $_SESSION['idKH']; ?>">Đặt tour ngay</a>
+                                <a class="btn btnDatNgay" href="?controller=Checkout&action=index&idTour=<?php echo $getTour['idTour'] ?>&idKH=<?php echo $_SESSION['idKH']; ?>">Đặt tour ngay</a>
                             <?php
                             } else {
                             ?>
-                                <a class="btn" href="http://localhost/website_book_tour/login.php">Đặt tour ngay</a>
+                                <a class="btn" href="../../../website_book_tour/login.php">Đặt tour ngay</a>
                             <?php
                             }
                             ?>

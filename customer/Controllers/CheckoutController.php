@@ -27,6 +27,6 @@ class CheckoutController extends BaseController
         $idTour = $_POST['idTour'];
         $tongTien = $_POST['lastMoney'];
         $ngayDatTour = $_POST['thisDay'];
-        $this-> CheckoutModel -> datTour($ngayDatTour, $slNguoi, $tongTien, $idKH, $idTour);
+        $this->CheckoutModel->datTour($ngayDatTour, $slNguoi, $tongTien, $idKH, $idTour);
     }
 }
