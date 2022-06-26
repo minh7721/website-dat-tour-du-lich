@@ -34,7 +34,7 @@ session_start();
 
         <div id="menu-bar" class="fas fa-bars"></div>
 
-        <a href="#" class="logo"><span>T</span>ravel</a>
+        <a href="?controller=customer&action=index" class="logo"><span>T</span>ravel</a>
 
         <nav class="navbar" style="width:800px;">
             <a href="?controller=customer&action=index">Trang chủ</a>

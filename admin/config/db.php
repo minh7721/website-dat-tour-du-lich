@@ -3,4 +3,5 @@
     if(!$connect){
         die('Không thể kết nối cơ sở dữ liệu');
     }
+    $connect -> set_charset("utf8");
 ?>
